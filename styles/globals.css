@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-beige: #F7F5F2;
+  --brand-charcoal: #2F2F2F;
+  --brand-accent: #C49A6C;
+}
+
+html.dark {
+  --brand-beige: #2F2F2F;
+  --brand-charcoal: #F7F5F2;
+  --brand-accent: #C49A6C;
+  background: var(--brand-charcoal);
+}
