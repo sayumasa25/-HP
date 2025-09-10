@@ -4,122 +4,164 @@ import Image from "next/image";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center overflow-hidden">
-      {/* Dynamic background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-10 left-10 w-72 h-72 bg-gradient-to-r from-pink-500 to-yellow-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full blur-3xl opacity-25 animate-bounce"></div>
-        <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-gradient-to-r from-green-400 to-blue-500 rounded-full blur-2xl opacity-30"></div>
-        <div className="absolute bottom-1/3 left-1/4 w-64 h-64 bg-gradient-to-r from-red-400 to-pink-500 rounded-full blur-2xl opacity-20"></div>
-      </div>
-
-      {/* Animated particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-white rounded-full opacity-30"
-            animate={{
-              x: [0, 100, 0],
-              y: [0, -100, 0],
-              opacity: [0.3, 0.8, 0.3],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
+    <>
+      <section className="relative min-h-screen bg-white flex items-center justify-center overflow-hidden">
+        {/* Large Hero Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=1920&h=1080&fit=crop&crop=center"
+            alt="美しい女性用シューズコレクション - エレガントで上品なデザイン"
+            className="w-full h-full object-cover"
           />
-        ))}
-      </div>
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
 
-      <div className="relative z-10 max-w-screen-xl mx-auto px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, type: "spring", bounce: 0.4 }}
-        >
-          <motion.h1 
-            className="font-bold text-5xl md:text-7xl lg:text-8xl text-white mb-8 leading-tight"
-            animate={{ 
-              textShadow: [
-                "0 0 20px rgba(255,255,255,0.5)",
-                "0 0 40px rgba(255,0,255,0.8)",
-                "0 0 20px rgba(255,255,255,0.5)"
-              ]
-            }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              橋本靴店
-            </span>
-            <br />
-            <span className="text-4xl md:text-5xl lg:text-6xl">
-              革新的な婦人靴
-            </span>
-          </motion.h1>
-          
-          <motion.p 
-            className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto leading-relaxed font-medium"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-          >
-            🚀 デベロッパー向けPOPUPイベント出展中！<br />
-            👥 一般のお客様はBASE・楽天市場でお買い物を<br />
-            🏪 広島在住の方は倉庫大開放市で最安値購入可能
-          </motion.p>
-
+        <div className="relative z-10 max-w-screen-xl mx-auto px-4 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            transition={{ duration: 1 }}
           >
-            <motion.button 
-              className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-10 py-5 rounded-full font-bold text-lg shadow-2xl transform hover:scale-105 transition-all duration-300"
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(255,0,255,0.3)" }}
-              whileTap={{ scale: 0.95 }}
+            <motion.h1 
+              className="font-light text-4xl md:text-6xl lg:text-7xl text-white mb-8 leading-relaxed tracking-wider"
+              style={{ fontFamily: "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif" }}
             >
-              🎯 デベロッパーイベント詳細
-            </motion.button>
-            <motion.button 
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-10 py-5 rounded-full font-bold text-lg shadow-2xl transform hover:scale-105 transition-all duration-300"
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,255,255,0.3)" }}
-              whileTap={{ scale: 0.95 }}
-            >
-              🛒 オンラインストア
-            </motion.button>
-          </motion.div>
-        </motion.div>
+              <span className="text-white/90 tracking-widest text-2xl md:text-3xl block mb-4">
+                くつの橋本商店
+              </span>
+              <span className="text-lg md:text-xl font-light tracking-wide block mb-6 text-white/80">
+                1922年創業の広島の靴の老舗です。
+              </span>
+            </motion.h1>
 
-        {/* Enhanced scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.6 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div 
-            className="flex flex-col items-center text-white/80"
-            animate={{ y: [0, 15, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-          >
-            <span className="text-lg mb-3 font-medium">SCROLL DOWN</span>
-            <div className="w-8 h-12 border-3 border-white/60 rounded-full flex justify-center relative overflow-hidden">
-              <motion.div
-                className="w-2 h-4 bg-gradient-to-b from-pink-400 to-purple-400 rounded-full mt-2"
-                animate={{ y: [0, 16, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-              ></motion.div>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            >
+              <motion.a 
+                href="https://hs928.base.shop/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white text-gray-800 px-10 py-4 rounded-none font-light text-lg hover:bg-gray-100 transition-colors border border-white"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                ONLINE SHOP
+              </motion.a>
+              <motion.a 
+                href="/company"
+                className="border border-white text-white px-10 py-4 rounded-none font-light text-lg hover:bg-white hover:text-gray-800 transition-colors"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                COMPANY
+              </motion.a>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      </div>
-    </section>
+        </div>
+      </section>
+
+      {/* Mission Section - Below Hero Image */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3, duration: 0.8 }}
+        className="relative z-10 bg-white py-20"
+      >
+        <div className="max-w-screen-xl mx-auto px-4 text-center">
+          <h2 className="text-5xl md:text-6xl font-extralight text-gray-800 mb-8 tracking-wide"
+              style={{ fontFamily: "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif" }}>
+            MISSION
+          </h2>
+          
+          <div className="max-w-4xl mx-auto">
+            <p className="text-3xl md:text-4xl font-light mb-8 text-gray-800 leading-relaxed"
+               style={{ fontFamily: "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif" }}>
+              一歩先の美しさを、あなたの足元に。
+            </p>
+            
+            <div className="text-lg md:text-xl leading-relaxed text-gray-700 font-light space-y-4"
+                 style={{ fontFamily: "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif" }}>
+              <p>私たちは1922年創業のレディースシューズの専門店です。</p>
+              <p>品質・快適さ・美しさを兼ね備えた靴を、全国の女性にお届けしています。</p>
+              <p>時代に合わせたEC展開と、変わらぬ職人技を融合し、100年企業として進化を続けています。</p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Product Showcase Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.5, duration: 0.8 }}
+        className="relative z-10 bg-gray-50 py-16"
+      >
+        <div className="max-w-screen-xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-light text-center text-gray-800 mb-12 tracking-wide"
+              style={{ fontFamily: "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif" }}>
+            COLLECTION
+          </h2>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <motion.div 
+              className="text-center"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=300&h=300&fit=crop&crop=center"
+                alt="エレガントシューズ"
+                className="w-full h-48 object-cover mb-4 border border-gray-200"
+              />
+              <h3 className="text-lg font-light text-gray-800 tracking-wide">エレガント</h3>
+            </motion.div>
+            
+            <motion.div 
+              className="text-center"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=300&h=300&fit=crop&crop=center"
+                alt="カジュアルシューズ"
+                className="w-full h-48 object-cover mb-4 border border-gray-200"
+              />
+              <h3 className="text-lg font-light text-gray-800 tracking-wide">カジュアル</h3>
+            </motion.div>
+            
+            <motion.div 
+              className="text-center"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=300&fit=crop&crop=center"
+                alt="コンフォートシューズ"
+                className="w-full h-48 object-cover mb-4 border border-gray-200"
+              />
+              <h3 className="text-lg font-light text-gray-800 tracking-wide">コンフォート</h3>
+            </motion.div>
+            
+            <motion.div 
+              className="text-center"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=300&h=300&fit=crop&crop=center"
+                alt="ビジネスシューズ"
+                className="w-full h-48 object-cover mb-4 border border-gray-200"
+              />
+              <h3 className="text-lg font-light text-gray-800 tracking-wide">ビジネス</h3>
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
+    </>
   );
 }

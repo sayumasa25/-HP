@@ -5,10 +5,11 @@ export function Footer() {
     <footer className="bg-brand-charcoal text-brand-beige py-10 mt-24">
       <div className="max-w-screen-xl mx-auto px-4 grid gap-8 md:grid-cols-3">
         <div>
-          <h2 className="font-serif text-lg mb-2">Hashimoto Shoes</h2>
+          <h2 className="font-serif text-lg mb-2">くつの橋本商店</h2>
           <p className="text-sm leading-relaxed">
-            〒730-0011 広島県広島市中区基町1-1<br />
-            TEL 082-000-0000
+            〒733-0833<br />
+            広島市西区商工センター2-9-32<br />
+            TEL 082-277-2671
           </p>
         </div>
         <div>
@@ -27,7 +28,7 @@ export function Footer() {
             <Link href="#" aria-label="Instagram" className="w-6 h-6 bg-brand-beige/20 rounded-full" />
             <Link href="#" aria-label="LinkedIn" className="w-6 h-6 bg-brand-beige/20 rounded-full" />
           </div>
-          <p className="text-xs">© {new Date().getFullYear()} Hashimoto Shoes</p>
+          <p className="text-xs">© {new Date().getFullYear()} くつの橋本商店</p>
         </div>
       </div>
     </footer>

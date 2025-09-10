@@ -1,21 +1,19 @@
 import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
+import { ShoppingSection } from "@/components/ShoppingSection";
 import { NewsSection } from "@/components/NewsSection";
-import { EventsSection } from "@/components/EventsSection";
-import { ContactForm } from "@/components/ContactForm";
+import { BrandsSection } from "@/components/BrandsSection";
+import { SNSIcons } from "@/components/SNSIcons";
 
 export default function Home() {
   return (
     <main>
       <HeroSection />
       <AboutSection />
+      <ShoppingSection />
       <NewsSection />
-      <EventsSection />
-      <ContactForm />
-      {/* 今後追加予定のコンポーネント:
-          - BrandsGrid
-          - ProductCarousel  
-      */}
+      <BrandsSection />
+      <SNSIcons />
     </main>
   );
 }
