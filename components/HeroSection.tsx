@@ -146,7 +146,8 @@ export function HeroSection() {
               <img
                 src="/エレガント.JPG"
                 alt="エレガントシューズ"
-                className="w-full h-48 object-cover mb-4 border border-gray-200"
+                className="w-full aspect-square object-contain bg-gray-100 border border-gray-200 mb-4"
+                loading="lazy"
               />
               <h3 className="text-lg font-light text-gray-800 tracking-wide">
                 エレガント
@@ -164,7 +165,8 @@ export function HeroSection() {
               <img
                 src="/カジュアル.png"
                 alt="カジュアルシューズ"
-                className="w-full h-48 object-cover mb-4 border border-gray-200"
+                className="w-full aspect-square object-contain bg-gray-100 border border-gray-200 mb-4"
+                loading="lazy"
               />
               <h3 className="text-lg font-light text-gray-800 tracking-wide">
                 カジュアル
@@ -182,7 +184,8 @@ export function HeroSection() {
               <img
                 src="/コンフォート.JPG"
                 alt="コンフォートシューズ"
-                className="w-full h-48 object-cover mb-4 border border-gray-200"
+                className="w-full aspect-square object-contain bg-gray-100 border border-gray-200 mb-4"
+                loading="lazy"
               />
               <h3 className="text-lg font-light text-gray-800 tracking-wide">
                 コンフォート
@@ -200,7 +203,8 @@ export function HeroSection() {
               <img
                 src="/スニーカー.png"
                 alt="スニーカー"
-                className="w-full h-48 object-cover mb-4 border border-gray-200"
+                className="w-full aspect-square object-contain bg-gray-100 border border-gray-200 mb-4"
+                loading="lazy"
               />
               <h3 className="text-lg font-light text-gray-800 tracking-wide">
                 スニーカー

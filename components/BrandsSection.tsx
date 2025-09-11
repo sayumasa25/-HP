@@ -62,7 +62,8 @@ export function BrandsSection() {
               <img
                 src={brand.image}
                 alt={brand.name}
-                className="w-full h-64 object-cover"
+                className="w-full aspect-[4/3] object-contain bg-gray-100"
+                loading="lazy"
               />
               <div className="p-6">
                 <h3

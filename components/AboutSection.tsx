@@ -65,7 +65,8 @@ export function AboutSection() {
             <img
               src="/ABOUT US.jpg"
               alt="女性の輝きを足元から応援"
-              className="w-full h-96 object-cover border border-gray-200"
+              className="w-full aspect-[4/3] object-contain bg-gray-100 border border-gray-200"
+              loading="lazy"
             />
           </motion.div>
         </div>
