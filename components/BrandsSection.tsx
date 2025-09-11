@@ -4,19 +4,20 @@ import { motion } from "framer-motion";
 export function BrandsSection() {
   const brands = [
     {
-      name: "エレガンス",
-      description: "フォーマルからビジネスまで、上品で洗練されたデザイン",
-      image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=300&fit=crop&crop=center"
+      name: "HS（エイチエス）",
+      description: "履きやすさとデザインにこだわった当店オリジナルブランド",
+      image: "/エイチエス.png"
     },
     {
-      name: "カジュアル",
-      description: "日常使いに最適な履き心地とスタイルを両立",
-      image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=300&fit=crop&crop=center"
+      name: "SCORPIUS（スコーピウス）",
+      description: "メタル素材のカッコよさとトラッドを融合させた当店新ブランド。LWGレザーのみを使用した唯一の靴ブランド。",
+      image: "/スコーピウス.png",
+      link: "https://www.rakuten.co.jp/hs928/contents/lwg-scorpius//"
     },
     {
-      name: "コンフォート",
-      description: "長時間の歩行でも疲れにくい機能性重視のシリーズ",
-      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop&crop=center"
+      name: "Phiten（ファイテン）",
+      description: "ファイテンの正規代理店から買い付けたスニーカーを販売しています。",
+      image: "/PHITEN.jpg"
     }
   ];
 
@@ -62,7 +63,21 @@ export function BrandsSection() {
                   {brand.name}
                 </h3>
                 <p className="text-gray-600 font-light leading-relaxed">
-                  {brand.description}
+                  {brand.name === "SCORPIUS（スコーピウス）" ? (
+                    <>
+                      メタル素材のカッコよさとトラッドを融合させた当店新ブランド。LWGレザーのみを使用した唯一の靴ブランド。
+                      <a 
+                        href="https://www.rakuten.co.jp/hs928/contents/lwg-scorpius//"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 underline ml-1"
+                      >
+                        LWGとは？
+                      </a>
+                    </>
+                  ) : (
+                    brand.description
+                  )}
                 </p>
               </div>
             </motion.div>

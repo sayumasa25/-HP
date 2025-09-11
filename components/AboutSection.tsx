@@ -51,7 +51,7 @@ export function AboutSection() {
             className="relative"
           >
             <img 
-              src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=600&h=500&fit=crop&crop=center"
+              src="/ABOUT US.jpg"
               alt="女性の輝きを足元から応援"
               className="w-full h-96 object-cover border border-gray-200"
             />

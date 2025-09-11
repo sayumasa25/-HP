@@ -108,57 +108,69 @@ export function HeroSection() {
           </h2>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <motion.div 
-              className="text-center"
+            <motion.a 
+              href="https://item.rakuten.co.jp/hs928/c/0000000100/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-center block"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
               <img 
-                src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=300&h=300&fit=crop&crop=center"
+                src="/エレガント.JPG"
                 alt="エレガントシューズ"
                 className="w-full h-48 object-cover mb-4 border border-gray-200"
               />
               <h3 className="text-lg font-light text-gray-800 tracking-wide">エレガント</h3>
-            </motion.div>
+            </motion.a>
             
-            <motion.div 
-              className="text-center"
+            <motion.a 
+              href="https://item.rakuten.co.jp/hs928/c/0000000277/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-center block"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
               <img 
-                src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=300&h=300&fit=crop&crop=center"
+                src="/カジュアル.png"
                 alt="カジュアルシューズ"
                 className="w-full h-48 object-cover mb-4 border border-gray-200"
               />
               <h3 className="text-lg font-light text-gray-800 tracking-wide">カジュアル</h3>
-            </motion.div>
+            </motion.a>
             
-            <motion.div 
-              className="text-center"
+            <motion.a 
+              href="https://item.rakuten.co.jp/hs928/c/0000000102/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-center block"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
               <img 
-                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=300&h=300&fit=crop&crop=center"
+                src="/コンフォート.JPG"
                 alt="コンフォートシューズ"
                 className="w-full h-48 object-cover mb-4 border border-gray-200"
               />
               <h3 className="text-lg font-light text-gray-800 tracking-wide">コンフォート</h3>
-            </motion.div>
+            </motion.a>
             
-            <motion.div 
-              className="text-center"
+            <motion.a 
+              href="https://item.rakuten.co.jp/hs928/c/0000000272/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-center block"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
               <img 
-                src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=300&h=300&fit=crop&crop=center"
-                alt="ビジネスシューズ"
+                src="/スニーカー.png"
+                alt="スニーカー"
                 className="w-full h-48 object-cover mb-4 border border-gray-200"
               />
-              <h3 className="text-lg font-light text-gray-800 tracking-wide">ビジネス</h3>
-            </motion.div>
+              <h3 className="text-lg font-light text-gray-800 tracking-wide">スニーカー</h3>
+            </motion.a>
           </div>
         </div>
       </motion.div>
