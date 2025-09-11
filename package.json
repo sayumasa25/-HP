@@ -26,6 +26,7 @@
     "nodemailer": "^6.10.1",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
+    "sharp": "^0.34.3",
     "sqlite3": "^5.1.6"
   },
   "devDependencies": {
