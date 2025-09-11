@@ -6,19 +6,21 @@ export function BrandsSection() {
     {
       name: "HS（エイチエス）",
       description: "履きやすさとデザインにこだわった当店オリジナルブランド",
-      image: "/エイチエス.png"
+      image: "/エイチエス.png",
     },
     {
       name: "SCORPIUS（スコーピウス）",
-      description: "メタル素材のカッコよさとトラッドを融合させた当店新ブランド。LWGレザーのみを使用した唯一の靴ブランド。",
+      description:
+        "メタル素材のカッコよさとトラッドを融合させた当店新ブランド。LWGレザーのみを使用した唯一の靴ブランド。",
       image: "/スコーピウス.png",
-      link: "https://www.rakuten.co.jp/hs928/contents/lwg-scorpius//"
+      link: "https://www.rakuten.co.jp/hs928/contents/lwg-scorpius//",
     },
     {
       name: "Phiten（ファイテン）",
-      description: "ファイテンの正規代理店から買い付けたスニーカーを販売しています。",
-      image: "/PHITEN.jpg"
-    }
+      description:
+        "ファイテンの正規代理店から買い付けたスニーカーを販売しています。",
+      image: "/PHITEN.jpg",
+    },
   ];
 
   return (
@@ -31,8 +33,13 @@ export function BrandsSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-4 tracking-wider"
-              style={{ fontFamily: "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif" }}>
+          <h2
+            className="text-4xl md:text-5xl font-light text-gray-800 mb-4 tracking-wider"
+            style={{
+              fontFamily:
+                "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif",
+            }}
+          >
             BRANDS
           </h2>
           <p className="text-lg text-gray-600 font-light">ブランド・シリーズ</p>
@@ -52,21 +59,26 @@ export function BrandsSection() {
               transition={{ delay: index * 0.2, duration: 0.6 }}
               className="bg-gray-50 border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
-              <img 
+              <img
                 src={brand.image}
                 alt={brand.name}
                 className="w-full h-64 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-light text-gray-800 mb-3 tracking-wide"
-                    style={{ fontFamily: "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif" }}>
+                <h3
+                  className="text-xl font-light text-gray-800 mb-3 tracking-wide"
+                  style={{
+                    fontFamily:
+                      "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif",
+                  }}
+                >
                   {brand.name}
                 </h3>
                 <p className="text-gray-600 font-light leading-relaxed">
                   {brand.name === "SCORPIUS（スコーピウス）" ? (
                     <>
                       メタル素材のカッコよさとトラッドを融合させた当店新ブランド。LWGレザーのみを使用した唯一の靴ブランド。
-                      <a 
+                      <a
                         href="https://www.rakuten.co.jp/hs928/contents/lwg-scorpius//"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -91,7 +103,7 @@ export function BrandsSection() {
           transition={{ delay: 0.8, duration: 0.6 }}
           className="text-center mt-12"
         >
-          <a 
+          <a
             href="https://hs928.base.shop/"
             target="_blank"
             rel="noopener noreferrer"

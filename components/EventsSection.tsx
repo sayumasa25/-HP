@@ -18,11 +18,11 @@ export function EventsSection() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/events');
+        const response = await fetch("http://localhost:4000/api/events");
         const data = await response.json();
         setEvents(data);
       } catch (error) {
-        console.error('Failed to fetch events:', error);
+        console.error("Failed to fetch events:", error);
       } finally {
         setLoading(false);
       }
@@ -35,7 +35,9 @@ export function EventsSection() {
     return (
       <section className="py-16 bg-brand-beige/10">
         <div className="max-w-screen-xl mx-auto px-4">
-          <h2 className="font-serif text-3xl text-center mb-12">イベント・展示会</h2>
+          <h2 className="font-serif text-3xl text-center mb-12">
+            イベント・展示会
+          </h2>
           <div className="text-center">読み込み中...</div>
         </div>
       </section>
@@ -45,7 +47,7 @@ export function EventsSection() {
   return (
     <section className="py-16 bg-brand-beige/10">
       <div className="max-w-screen-xl mx-auto px-4">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -53,7 +55,7 @@ export function EventsSection() {
         >
           イベント・展示会
         </motion.h2>
-        
+
         {events.length === 0 ? (
           <div className="text-center text-gray-500">
             イベント情報がありません
@@ -74,9 +76,7 @@ export function EventsSection() {
                     <h3 className="font-serif text-xl mb-2 text-brand-charcoal">
                       {item.title}
                     </h3>
-                    <p className="text-gray-600 mb-2">
-                      {item.excerpt}
-                    </p>
+                    <p className="text-gray-600 mb-2">{item.excerpt}</p>
                     {item.location && (
                       <p className="text-sm text-brand-accent">
                         📍 {item.location}
@@ -85,10 +85,12 @@ export function EventsSection() {
                   </div>
                   <div className="mt-4 md:mt-0 md:ml-6 text-right">
                     <time className="text-lg font-semibold text-brand-charcoal block">
-                      {new Date(item.date).toLocaleDateString('ja-JP')}
+                      {new Date(item.date).toLocaleDateString("ja-JP")}
                     </time>
                     <span className="text-xs text-gray-500">
-                      {new Date(item.date).toLocaleDateString('ja-JP', { weekday: 'short' })}
+                      {new Date(item.date).toLocaleDateString("ja-JP", {
+                        weekday: "short",
+                      })}
                     </span>
                   </div>
                 </div>

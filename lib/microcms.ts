@@ -1,8 +1,8 @@
-import { createClient } from 'microcms-js-sdk';
+import { createClient } from "microcms-js-sdk";
 
 export const client = createClient({
-  serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN || '',
-  apiKey: process.env.MICROCMS_API_KEY || '',
+  serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN ?? "",
+  apiKey: process.env.MICROCMS_API_KEY ?? "",
 });
 
 // ニュース記事の型定義
@@ -40,11 +40,11 @@ export interface EventItem {
 export const getContentBlocks = async () => {
   try {
     const data = await client.get({
-      endpoint: 'contentBlocks',
+      endpoint: "contentBlocks",
     });
     return data.contents;
   } catch (error) {
-    console.error('Failed to fetch content blocks:', error);
+    console.error("Failed to fetch content blocks:", error);
     return [];
   }
 };
@@ -53,9 +53,9 @@ export const getContentBlocks = async () => {
 export const getNews = async () => {
   try {
     const data = await getContentBlocks();
-    return data.filter((item: any) => item.type === 'news');
+    return data.filter((item: any) => item.type === "news");
   } catch (error) {
-    console.error('Failed to fetch news:', error);
+    console.error("Failed to fetch news:", error);
     return [];
   }
 };
@@ -64,9 +64,9 @@ export const getNews = async () => {
 export const getEvents = async () => {
   try {
     const data = await getContentBlocks();
-    return data.filter((item: any) => item.type === 'event');
+    return data.filter((item: any) => item.type === "event");
   } catch (error) {
-    console.error('Failed to fetch events:', error);
+    console.error("Failed to fetch events:", error);
     return [];
   }
 };
@@ -75,12 +75,12 @@ export const getEvents = async () => {
 export const getNewsById = async (id: string) => {
   try {
     const data = await client.get({
-      endpoint: 'news',
+      endpoint: "news",
       contentId: id,
     });
     return data as NewsItem;
   } catch (error) {
-    console.error('Failed to fetch news item:', error);
+    console.error("Failed to fetch news item:", error);
     return null;
   }
 };
@@ -89,12 +89,12 @@ export const getNewsById = async (id: string) => {
 export const getEventById = async (id: string) => {
   try {
     const data = await client.get({
-      endpoint: 'events',
+      endpoint: "events",
       contentId: id,
     });
     return data as EventItem;
   } catch (error) {
-    console.error('Failed to fetch event item:', error);
+    console.error("Failed to fetch event item:", error);
     return null;
   }
 };

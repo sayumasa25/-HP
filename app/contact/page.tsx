@@ -9,22 +9,28 @@ export default function ContactPage() {
     company: "",
     phone: "",
     subject: "",
-    message: ""
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -42,7 +48,7 @@ export default function ContactPage() {
           company: "",
           phone: "",
           subject: "",
-          message: ""
+          message: "",
         });
       } else {
         setSubmitStatus("error");
@@ -64,8 +70,13 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl font-light text-gray-800 mb-6 tracking-wider"
-                style={{ fontFamily: "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif" }}>
+            <h1
+              className="text-4xl md:text-5xl font-light text-gray-800 mb-6 tracking-wider"
+              style={{
+                fontFamily:
+                  "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif",
+              }}
+            >
               CONTACT
             </h1>
             <p className="text-lg text-gray-600 font-light">お問い合わせ</p>
@@ -86,33 +97,49 @@ export default function ContactPage() {
             <div className="grid md:grid-cols-2 gap-12">
               {/* Contact Information */}
               <div>
-                <h2 className="text-2xl font-light text-gray-800 mb-8 tracking-wide"
-                    style={{ fontFamily: "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif" }}>
+                <h2
+                  className="text-2xl font-light text-gray-800 mb-8 tracking-wide"
+                  style={{
+                    fontFamily:
+                      "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif",
+                  }}
+                >
                   お問い合わせ先
                 </h2>
-                
+
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-light text-gray-800 mb-2">店舗情報</h3>
+                    <h3 className="text-lg font-light text-gray-800 mb-2">
+                      店舗情報
+                    </h3>
                     <p className="text-gray-600 font-light leading-relaxed">
-                      くつの橋本商店<br />
-                      〒733-0833<br />
-                      広島市西区商工センター2-9-32<br />
+                      くつの橋本商店
+                      <br />
+                      〒733-0833
+                      <br />
+                      広島市西区商工センター2-9-32
+                      <br />
                       TEL: 082-277-2671
                     </p>
                   </div>
-                  
+
                   <div>
-                    <h3 className="text-lg font-light text-gray-800 mb-2">営業時間</h3>
+                    <h3 className="text-lg font-light text-gray-800 mb-2">
+                      営業時間
+                    </h3>
                     <p className="text-gray-600 font-light">
-                      平日 9:00 - 18:00<br />
-                      土曜 9:00 - 17:00<br />
+                      平日 9:00 - 18:00
+                      <br />
+                      土曜 9:00 - 17:00
+                      <br />
                       日曜・祝日 定休日
                     </p>
                   </div>
-                  
+
                   <div>
-                    <h3 className="text-lg font-light text-gray-800 mb-2">お問い合わせについて</h3>
+                    <h3 className="text-lg font-light text-gray-800 mb-2">
+                      お問い合わせについて
+                    </h3>
                     <p className="text-gray-600 font-light leading-relaxed">
                       商品に関するご質問、催事イベントの開催予定、
                       その他ご不明な点がございましたら、
@@ -124,8 +151,13 @@ export default function ContactPage() {
 
               {/* Contact Form */}
               <div>
-                <h2 className="text-2xl font-light text-gray-800 mb-8 tracking-wide"
-                    style={{ fontFamily: "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif" }}>
+                <h2
+                  className="text-2xl font-light text-gray-800 mb-8 tracking-wide"
+                  style={{
+                    fontFamily:
+                      "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif",
+                  }}
+                >
                   お問い合わせフォーム
                 </h2>
 
@@ -143,7 +175,10 @@ export default function ContactPage() {
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-light text-gray-700 mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-light text-gray-700 mb-2"
+                    >
                       お名前 <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -158,7 +193,10 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-light text-gray-700 mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-light text-gray-700 mb-2"
+                    >
                       メールアドレス <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -173,7 +211,10 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="company" className="block text-sm font-light text-gray-700 mb-2">
+                    <label
+                      htmlFor="company"
+                      className="block text-sm font-light text-gray-700 mb-2"
+                    >
                       会社名・団体名
                     </label>
                     <input
@@ -187,7 +228,10 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-light text-gray-700 mb-2">
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-light text-gray-700 mb-2"
+                    >
                       電話番号
                     </label>
                     <input
@@ -201,7 +245,10 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-light text-gray-700 mb-2">
+                    <label
+                      htmlFor="subject"
+                      className="block text-sm font-light text-gray-700 mb-2"
+                    >
                       お問い合わせ種別 <span className="text-red-500">*</span>
                     </label>
                     <select
@@ -214,15 +261,24 @@ export default function ContactPage() {
                     >
                       <option value="">選択してください</option>
                       <option value="商品について">商品について</option>
-                      <option value="催事イベントについて">催事イベントについて</option>
-                      <option value="倉庫大開放市について">倉庫大開放市について</option>
-                      <option value="オンラインショップについて">オンラインショップについて</option>
+                      <option value="催事イベントについて">
+                        催事イベントについて
+                      </option>
+                      <option value="倉庫大開放市について">
+                        倉庫大開放市について
+                      </option>
+                      <option value="オンラインショップについて">
+                        オンラインショップについて
+                      </option>
                       <option value="その他">その他</option>
                     </select>
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block text-sm font-light text-gray-700 mb-2">
+                    <label
+                      htmlFor="message"
+                      className="block text-sm font-light text-gray-700 mb-2"
+                    >
                       お問い合わせ内容 <span className="text-red-500">*</span>
                     </label>
                     <textarea

@@ -14,42 +14,46 @@ export function ContactForm() {
     name: "",
     email: "",
     company: "",
-    message: ""
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus('idle');
+    setSubmitStatus("idle");
 
     try {
-      const response = await fetch('https://example.com/api/contact', {
-        method: 'POST',
+      const response = await fetch("https://example.com/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        setSubmitStatus('success');
+        setSubmitStatus("success");
         setFormData({ name: "", email: "", company: "", message: "" });
       } else {
-        setSubmitStatus('error');
+        setSubmitStatus("error");
       }
     } catch (error) {
-      console.error('Contact form error:', error);
-      setSubmitStatus('error');
+      console.error("Contact form error:", error);
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
@@ -74,7 +78,10 @@ export function ContactForm() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-brand-charcoal mb-2">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-brand-charcoal mb-2"
+                >
                   お名前 <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -90,7 +97,10 @@ export function ContactForm() {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-brand-charcoal mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-brand-charcoal mb-2"
+                >
                   メールアドレス <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -107,7 +117,10 @@ export function ContactForm() {
             </div>
 
             <div>
-              <label htmlFor="company" className="block text-sm font-medium text-brand-charcoal mb-2">
+              <label
+                htmlFor="company"
+                className="block text-sm font-medium text-brand-charcoal mb-2"
+              >
                 会社名・店舗名
               </label>
               <input
@@ -122,7 +135,10 @@ export function ContactForm() {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-brand-charcoal mb-2">
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-brand-charcoal mb-2"
+              >
                 お問い合わせ内容 <span className="text-red-500">*</span>
               </label>
               <textarea
@@ -137,7 +153,7 @@ export function ContactForm() {
               />
             </div>
 
-            {submitStatus === 'success' && (
+            {submitStatus === "success" && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -149,14 +165,15 @@ export function ContactForm() {
               </motion.div>
             )}
 
-            {submitStatus === 'error' && (
+            {submitStatus === "error" && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="p-4 bg-red-50 border border-red-200 rounded-lg"
               >
                 <p className="text-red-800 text-center">
-                  ❌ 送信に失敗しました。しばらく時間をおいて再度お試しください。
+                  ❌
+                  送信に失敗しました。しばらく時間をおいて再度お試しください。
                 </p>
               </motion.div>
             )}
@@ -167,7 +184,7 @@ export function ContactForm() {
                 disabled={isSubmitting}
                 className="bg-brand-accent text-white px-8 py-4 rounded-lg font-medium hover:bg-brand-accent/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? '送信中...' : 'お問い合わせを送信'}
+                {isSubmitting ? "送信中..." : "お問い合わせを送信"}
               </button>
             </div>
           </form>

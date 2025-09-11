@@ -27,12 +27,14 @@ pnpm server
 フロントエンドは `http://localhost:3000`、API サーバーは `http://localhost:4000` で起動します。
 
 ### Scripts
+
 - `pnpm dev` – Next.js dev server
 - `pnpm server` – Express API (ts-node)
 - `pnpm test` – Vitest + React Testing Library
 - `pnpm lint` – ESLint & Prettier check
 
 ## 🚀 Deploy
+
 Vercel へのデプロイを推奨しています。`vercel.json` が含まれていますので、自動的にビルド & デプロイされます。
 
 ---
@@ -42,6 +44,7 @@ Vercel へのデプロイを推奨しています。`vercel.json` が含まれ�
 This repository contains the full-stack code for Hashimoto Shoes corporate & B2B showcase site.
 
 ## Quick Start
+
 1. `pnpm install`
 2. `pnpm prisma generate && pnpm prisma migrate dev --name init`
 3. `cp .env.example .env.local` and fill in SMTP creds
