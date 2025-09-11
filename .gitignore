@@ -54,3 +54,6 @@ pids
 # Cache
 .npm
 .eslintcache
+
+# Local Netlify folder
+.netlify

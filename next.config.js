@@ -1,14 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true
-  },
+  output: 'export',
+  trailingSlash: true,
   images: {
+    unoptimized: true,
     domains: ["cdn.example.com"],
-  },
-  i18n: {
-    locales: ["ja", "en"],
-    defaultLocale: "ja",
   },
 };
 
