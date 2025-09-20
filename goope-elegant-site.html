@@ -1,0 +1,179 @@
+<!-- エレガントなCSS定義 -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.fade-in { animation: fadeInUp 0.6s ease-out; }
+.slide-in { animation: slideIn 0.8s ease-out; }
+.elegant-hover { transition: all 0.3s ease; }
+.elegant-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+.section-divider { width: 60px; height: 1px; background: #d4d4d4; margin: 30px auto; }
+</style>
+
+<!-- ヒーローセクション -->
+<div style="width: 100%; background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%); padding: 120px 20px 80px 20px; text-align: center; font-family: 'Noto Sans JP', sans-serif;">
+  <div class="fade-in" style="max-width: 800px; margin: 0 auto;">
+    <h1 style="font-size: 2.8em; font-weight: 300; color: #2c2c2c; margin: 0 0 25px 0; letter-spacing: 2px;">くつの橋本商店</h1>
+    <div class="section-divider"></div>
+    <p style="font-size: 1.1em; color: #666; line-height: 1.8; margin: 0 0 50px 0; font-weight: 300;">1922年創業の広島の靴の老舗です。<br>女性の輝きを足元から応援します。</p>
+    <a href="https://hs928.base.shop/" target="_blank" class="elegant-hover" style="display: inline-block; padding: 15px 40px; background: transparent; color: #2c2c2c; text-decoration: none; border: 1px solid #2c2c2c; font-weight: 400; letter-spacing: 1px; font-size: 0.9em;">ONLINE SHOP</a>
+  </div>
+</div>
+
+<!-- NEWSセクション -->
+<div style="width: 100%; background: #ffffff; padding: 80px 20px; font-family: 'Noto Sans JP', sans-serif;">
+  <div style="max-width: 900px; margin: 0 auto;">
+    <div class="fade-in" style="text-align: center; margin-bottom: 60px;">
+      <h2 style="font-size: 1.8em; font-weight: 400; color: #2c2c2c; margin: 0 0 20px 0; letter-spacing: 3px;">NEWS</h2>
+      <p style="font-size: 0.9em; color: #999; margin: 0;">ニュース</p>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="slide-in" style="border-top: 1px solid #f0f0f0;">
+      <div style="padding: 25px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+        <span style="background: #2c2c2c; color: white; padding: 4px 12px; font-size: 0.75em; margin-right: 20px; letter-spacing: 1px;">INFO</span>
+        <span style="color: #999; font-size: 0.85em; margin-right: 25px; min-width: 80px;">2025.01.15</span>
+        <span style="color: #2c2c2c; font-size: 0.95em; line-height: 1.6;">春の新作コレクション発売開始</span>
+      </div>
+      <div style="padding: 25px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+        <span style="background: #c9a96e; color: white; padding: 4px 12px; font-size: 0.75em; margin-right: 20px; letter-spacing: 1px;">SALE</span>
+        <span style="color: #999; font-size: 0.85em; margin-right: 25px; min-width: 80px;">2025.01.10</span>
+        <span style="color: #2c2c2c; font-size: 0.95em; line-height: 1.6;">ウィンターセール開催中（最大50%OFF）</span>
+      </div>
+      <div style="padding: 25px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center;">
+        <span style="background: #7a7a7a; color: white; padding: 4px 12px; font-size: 0.75em; margin-right: 20px; letter-spacing: 1px;">SHOP</span>
+        <span style="color: #999; font-size: 0.85em; margin-right: 25px; min-width: 80px;">2025.01.05</span>
+        <span style="color: #2c2c2c; font-size: 0.95em; line-height: 1.6;">年始営業時間のお知らせ</span>
+      </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="#" class="elegant-hover" style="color: #2c2c2c; text-decoration: none; font-size: 0.9em; letter-spacing: 1px; border-bottom: 1px solid #2c2c2c; padding-bottom: 2px;">VIEW MORE</a>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT USセクション -->
+<div style="width: 100%; background: #fafafa; padding: 80px 20px; font-family: 'Noto Sans JP', sans-serif;">
+  <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+    <div class="fade-in">
+      <h2 style="font-size: 1.8em; font-weight: 400; color: #2c2c2c; margin: 0 0 20px 0; letter-spacing: 3px;">ABOUT US</h2>
+      <p style="font-size: 0.9em; color: #999; margin: 0 0 40px 0;">橋本商店について</p>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="slide-in" style="max-width: 700px; margin: 0 auto;">
+      <h3 style="font-size: 1.4em; font-weight: 400; color: #2c2c2c; margin: 0 0 30px 0; line-height: 1.6;">女性の輝きを足元から応援する</h3>
+      <p style="font-size: 1em; color: #666; line-height: 1.9; margin: 0 0 25px 0; font-weight: 300;">女性が活躍する時代。女性のライフスタイルに寄り添い、支えていく。</p>
+      <p style="font-size: 1em; color: #666; line-height: 1.9; margin: 0 0 25px 0; font-weight: 300;">それが橋本商店の存在意義であり、ミッションだと考えています。</p>
+      <p style="font-size: 1em; color: #666; line-height: 1.9; margin: 0 0 40px 0; font-weight: 300;">自分らしく輝く女性たちへ。橋本商店はそんなあなたの毎日を快適に彩ります。</p>
+      
+      <a href="#" class="elegant-hover" style="color: #2c2c2c; text-decoration: none; font-size: 0.9em; letter-spacing: 1px; border-bottom: 1px solid #2c2c2c; padding-bottom: 2px;">VIEW MORE</a>
+    </div>
+  </div>
+</div>
+
+<!-- COLLECTIONセクション -->
+<div style="width: 100%; background: #ffffff; padding: 80px 20px; font-family: 'Noto Sans JP', sans-serif;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="fade-in" style="text-align: center; margin-bottom: 60px;">
+      <h2 style="font-size: 1.8em; font-weight: 400; color: #2c2c2c; margin: 0 0 20px 0; letter-spacing: 3px;">COLLECTION</h2>
+      <p style="font-size: 0.9em; color: #999; margin: 0;">コレクション</p>
+      <div class="section-divider"></div>
+    </div>
+    
+    <table style="width: 100%; border-collapse: collapse;">
+      <tr>
+        <td style="width: 33.33%; padding: 20px; vertical-align: top;">
+          <div class="elegant-hover fade-in" style="background: #ffffff; text-align: center;">
+            <div style="overflow: hidden; margin-bottom: 25px;">
+              <img src="https://cdn.goope.jp/50488/250325195320-67e28b20d5706.jpg" alt="カジュアル" style="width: 100%; height: 300px; object-fit: cover; transition: transform 0.5s ease;">
+            </div>
+            <h3 style="font-size: 1.2em; font-weight: 400; color: #2c2c2c; margin: 0 0 15px 0; letter-spacing: 1px;">CASUAL</h3>
+            <p style="font-size: 0.9em; color: #999; margin: 0;">カジュアル</p>
+            <p style="font-size: 0.85em; color: #666; line-height: 1.7; margin: 15px 0 0 0;">日常使いに最適な快適性とスタイルを両立</p>
+          </div>
+        </td>
+        <td style="width: 33.33%; padding: 20px; vertical-align: top;">
+          <div class="elegant-hover fade-in" style="background: #ffffff; text-align: center; animation-delay: 0.2s;">
+            <div style="overflow: hidden; margin-bottom: 25px;">
+              <img src="https://cdn.goope.jp/50488/250325195319-67e28b1fcd412.jpg" alt="フォーマル" style="width: 100%; height: 300px; object-fit: cover; transition: transform 0.5s ease;">
+            </div>
+            <h3 style="font-size: 1.2em; font-weight: 400; color: #2c2c2c; margin: 0 0 15px 0; letter-spacing: 1px;">FORMAL</h3>
+            <p style="font-size: 0.9em; color: #999; margin: 0;">フォーマル</p>
+            <p style="font-size: 0.85em; color: #666; line-height: 1.7; margin: 15px 0 0 0;">特別な日を彩る上品で洗練されたデザイン</p>
+          </div>
+        </td>
+        <td style="width: 33.33%; padding: 20px; vertical-align: top;">
+          <div class="elegant-hover fade-in" style="background: #ffffff; text-align: center; animation-delay: 0.4s;">
+            <div style="overflow: hidden; margin-bottom: 25px;">
+              <img src="https://cdn.goope.jp/50488/250325195318-67e28b1ec3a25.jpg" alt="コンフォート" style="width: 100%; height: 300px; object-fit: cover; transition: transform 0.5s ease;">
+            </div>
+            <h3 style="font-size: 1.2em; font-weight: 400; color: #2c2c2c; margin: 0 0 15px 0; letter-spacing: 1px;">COMFORT</h3>
+            <p style="font-size: 0.9em; color: #999; margin: 0;">コンフォート</p>
+            <p style="font-size: 0.85em; color: #666; line-height: 1.7; margin: 15px 0 0 0;">長時間履いても疲れない究極の履き心地</p>
+          </div>
+        </td>
+      </tr>
+    </table>
+    
+    <div style="text-align: center; margin-top: 50px;">
+      <a href="#" class="elegant-hover" style="color: #2c2c2c; text-decoration: none; font-size: 0.9em; letter-spacing: 1px; border-bottom: 1px solid #2c2c2c; padding-bottom: 2px;">VIEW MORE</a>
+    </div>
+  </div>
+</div>
+
+<!-- BRANDSセクション -->
+<div style="width: 100%; background: #fafafa; padding: 80px 20px; font-family: 'Noto Sans JP', sans-serif;">
+  <div style="max-width: 900px; margin: 0 auto;">
+    <div class="fade-in" style="text-align: center; margin-bottom: 60px;">
+      <h2 style="font-size: 1.8em; font-weight: 400; color: #2c2c2c; margin: 0 0 20px 0; letter-spacing: 3px;">BRANDS</h2>
+      <p style="font-size: 0.9em; color: #999; margin: 0;">ブランド</p>
+      <div class="section-divider"></div>
+    </div>
+    
+    <p class="slide-in" style="text-align: center; font-size: 1em; color: #666; line-height: 1.8; margin: 0 0 50px 0; font-weight: 300;">50年以上にわたる歴史の中で長く愛されるロングセラーから、<br>トレンド感のある旬なアイテムまで、様々なブランドを展開しています。</p>
+    
+    <table style="width: 100%; border-collapse: collapse;">
+      <tr>
+        <td style="width: 50%; padding: 25px; vertical-align: top;">
+          <div class="elegant-hover fade-in" style="background: #ffffff; padding: 40px; text-align: center; border: 1px solid #f0f0f0;">
+            <img src="https://cdn.goope.jp/50488/241126223256-6745ce0899d77.jpg" alt="PHITEN" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 25px;">
+            <h3 style="font-size: 1.3em; font-weight: 400; color: #2c2c2c; margin: 0 0 15px 0; letter-spacing: 1px;">PHITEN</h3>
+            <p style="font-size: 0.85em; color: #666; line-height: 1.7; margin: 0;">健康とファッションを両立する革新的なシューズブランド</p>
+          </div>
+        </td>
+        <td style="width: 50%; padding: 25px; vertical-align: top;">
+          <div class="elegant-hover fade-in" style="background: #ffffff; padding: 40px; text-align: center; border: 1px solid #f0f0f0; animation-delay: 0.2s;">
+            <img src="https://cdn.goope.jp/50488/240920134912fck4.jpg" alt="その他ブランド" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 25px;">
+            <h3 style="font-size: 1.3em; font-weight: 400; color: #2c2c2c; margin: 0 0 15px 0; letter-spacing: 1px;">OTHER BRANDS</h3>
+            <p style="font-size: 0.85em; color: #666; line-height: 1.7; margin: 0;">国内外の優れたシューズブランドを多数取り扱い</p>
+          </div>
+        </td>
+      </tr>
+    </table>
+    
+    <div style="text-align: center; margin-top: 50px;">
+      <a href="#" class="elegant-hover" style="color: #2c2c2c; text-decoration: none; font-size: 0.9em; letter-spacing: 1px; border-bottom: 1px solid #2c2c2c; padding-bottom: 2px;">VIEW MORE</a>
+    </div>
+  </div>
+</div>
+
+<!-- フッター -->
+<div style="width: 100%; background: #2c2c2c; color: #ffffff; padding: 60px 20px 40px 20px; text-align: center; font-family: 'Noto Sans JP', sans-serif;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <h3 style="font-size: 1.5em; font-weight: 300; margin: 0 0 30px 0; letter-spacing: 2px;">くつの橋本商店</h3>
+    <div style="width: 60px; height: 1px; background: #666; margin: 0 auto 30px auto;"></div>
+    <p style="font-size: 0.9em; color: #ccc; line-height: 1.8; margin: 0 0 30px 0; font-weight: 300;">〒730-0000 広島県広島市中区○○町1-2-3<br>TEL: 082-XXX-XXXX | 営業時間: 10:00-19:00（定休日：水曜日）</p>
+    <div style="margin: 40px 0;">
+      <a href="https://hs928.base.shop/" target="_blank" class="elegant-hover" style="display: inline-block; padding: 12px 35px; background: transparent; color: #ffffff; text-decoration: none; border: 1px solid #ffffff; font-weight: 400; letter-spacing: 1px; font-size: 0.9em;">ONLINE SHOP</a>
+    </div>
+    <p style="font-size: 0.8em; color: #999; margin: 30px 0 0 0; font-weight: 300;">© 2025 くつの橋本商店. All rights reserved.</p>
+  </div>
+</div>

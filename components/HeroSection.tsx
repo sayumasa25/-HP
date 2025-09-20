@@ -1,15 +1,25 @@
 "use client";
 import { motion } from "framer-motion";
+import { HeroImage, Collection } from '@/lib/microcms';
 import Image from "next/image";
 
-export function HeroSection() {
+interface HeroSectionProps {
+  heroImageData: HeroImage | null;
+  collectionsData: Collection[];
+}
+
+export function HeroSection({ heroImageData, collectionsData }: HeroSectionProps) {
+  // デフォルト画像URL
+  const defaultImageUrl = "https://images.unsplash.com/photo-1445205170230-053b83016050?w=1920&h=1080&fit=crop&crop=center";
+  const imageUrl = heroImageData?.backgroundImage?.url || defaultImageUrl;
+
   return (
     <>
       <section className="relative min-h-screen bg-white flex items-center justify-center overflow-hidden">
         {/* Large Hero Image */}
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=1920&h=1080&fit=crop&crop=center"
+            src={imageUrl}
             alt="美しい女性用シューズコレクション - エレガントで上品なデザイン"
             className="w-full h-full object-cover"
           />
@@ -135,81 +145,30 @@ export function HeroSection() {
           </h2>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <motion.a
-              href="https://item.rakuten.co.jp/hs928/c/0000000100/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-center block"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
-              <img
-                src="/エレガント.JPG"
-                alt="エレガントシューズ"
-                className="w-full aspect-square object-contain bg-gray-100 border border-gray-200 mb-4"
-                loading="lazy"
-              />
-              <h3 className="text-lg font-light text-gray-800 tracking-wide">
-                エレガント
-              </h3>
-            </motion.a>
-
-            <motion.a
-              href="https://item.rakuten.co.jp/hs928/c/0000000277/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-center block"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
-              <img
-                src="/カジュアル.png"
-                alt="カジュアルシューズ"
-                className="w-full aspect-square object-contain bg-gray-100 border border-gray-200 mb-4"
-                loading="lazy"
-              />
-              <h3 className="text-lg font-light text-gray-800 tracking-wide">
-                カジュアル
-              </h3>
-            </motion.a>
-
-            <motion.a
-              href="https://item.rakuten.co.jp/hs928/c/0000000102/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-center block"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
-              <img
-                src="/コンフォート.JPG"
-                alt="コンフォートシューズ"
-                className="w-full aspect-square object-contain bg-gray-100 border border-gray-200 mb-4"
-                loading="lazy"
-              />
-              <h3 className="text-lg font-light text-gray-800 tracking-wide">
-                コンフォート
-              </h3>
-            </motion.a>
-
-            <motion.a
-              href="https://item.rakuten.co.jp/hs928/c/0000000272/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-center block"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
-              <img
-                src="/スニーカー.png"
-                alt="スニーカー"
-                className="w-full aspect-square object-contain bg-gray-100 border border-gray-200 mb-4"
-                loading="lazy"
-              />
-              <h3 className="text-lg font-light text-gray-800 tracking-wide">
-                スニーカー
-              </h3>
-            </motion.a>
+            {collectionsData.map((collection, index) => (
+              <motion.a
+                key={collection.id}
+                href={collection.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-center block"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <img
+                  src={collection.image.url}
+                  alt={collection.name}
+                  className="w-full aspect-square object-contain bg-gray-100 border border-gray-200 mb-4"
+                  loading="lazy"
+                />
+                <h3 className="text-lg font-light text-gray-800 tracking-wide">
+                  {collection.name}
+                </h3>
+              </motion.a>
+            ))}
           </div>
         </div>
       </motion.div>

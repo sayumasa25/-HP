@@ -1,0 +1,93 @@
+<!-- CSS アニメーション定義 -->
+<style>
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.fade-in { animation: fadeInUp 0.8s ease-out; }
+.slide-in { animation: slideInLeft 0.8s ease-out; }
+.hover-scale { transition: all 0.3s ease; }
+.hover-scale:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+.float-animation { animation: float 3s ease-in-out infinite; }
+.pulse-animation { animation: pulse 2s ease-in-out infinite; }
+</style>
+
+<!-- ヒーローセクション -->
+<div style="width: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 100px 20px; text-align: center; position: relative; overflow: hidden;">
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><circle cx=\"20\" cy=\"20\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"80\" cy=\"40\" r=\"1\" fill=\"rgba(255,255,255,0.1)\"/><circle cx=\"40\" cy=\"80\" r=\"1.5\" fill=\"rgba(255,255,255,0.1)\"/></svg>'); animation: float 6s ease-in-out infinite;"></div>
+  <div class="fade-in" style="position: relative; z-index: 2;">
+    <h1 class="pulse-animation" style="font-size: 3.5em; margin: 0 0 20px 0; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">くつの橋本商店</h1>
+    <p class="slide-in" style="font-size: 1.4em; margin: 0 0 40px 0; opacity: 0.9;">1922年創業の広島の靴の老舗です。女性の輝きを足元から応援します。</p>
+    <a href="https://hs928.base.shop/" target="_blank" class="hover-scale" style="display: inline-block; padding: 20px 45px; background-color: #67c522; color: white; text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 1.2em; box-shadow: 0 6px 20px rgba(0,0,0,0.2);">オンラインショップ</a>
+  </div>
+</div>
+
+<!-- MISSIONセクション -->
+<div class="fade-in" style="width: 100%; background-color: #f8f9fa; padding: 100px 20px; text-align: center;">
+  <h2 style="font-size: 3em; color: #2c3e50; margin: 0 0 40px 0; font-weight: bold;">MISSION</h2>
+  <div style="max-width: 900px; margin: 0 auto;">
+    <h3 class="slide-in" style="font-size: 2.2em; color: #67c522; margin: 0 0 40px 0; font-weight: bold;">一歩先の美しさを、あなたの足元に。</h3>
+    <div class="fade-in" style="background: white; padding: 50px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+      <p style="font-size: 1.3em; line-height: 2; color: #555; margin: 0 0 25px 0;">私たちは1922年創業のレディースシューズの専門店です。</p>
+      <p style="font-size: 1.3em; line-height: 2; color: #555; margin: 0 0 25px 0;">品質・快適さ・美しさを兼ね備えた靴を、全国の女性にお届けしています。</p>
+      <p style="font-size: 1.3em; line-height: 2; color: #555; margin: 0;">時代に合わせたEC展開と、変わらぬ職人技を融合し、100年企業として進化を続けています。</p>
+    </div>
+  </div>
+</div>
+
+<!-- COLLECTIONセクション -->
+<div style="width: 100%; background: linear-gradient(45deg, #f093fb 0%, #f5576c 50%, #4facfe 100%); padding: 100px 20px; text-align: center;">
+  <h2 class="fade-in" style="font-size: 3em; color: white; margin: 0 0 60px 0; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">COLLECTION</h2>
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <table style="width: 100%; border-collapse: collapse;">
+      <tr>
+        <td style="width: 33.33%; padding: 25px; vertical-align: top;">
+          <div class="hover-scale fade-in" style="background: rgba(255,255,255,0.95); border-radius: 20px; overflow: hidden; backdrop-filter: blur(10px);">
+            <div style="position: relative; overflow: hidden;">
+              <img src="https://cdn.goope.jp/50488/250325195320-67e28b20d5706.jpg" alt="カジュアル" style="width: 100%; height: 280px; object-fit: cover; transition: transform 0.5s ease;">
+              <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(103,197,34,0.8), rgba(103,197,34,0.4)); opacity: 0; transition: opacity 0.3s ease;"></div>
+            </div>
+            <div style="padding: 30px;">
+              <h3 style="font-size: 1.6em; color: #2c3e50; margin: 0 0 15px 0;">カジュアル</h3>
+              <p style="color: #666; line-height: 1.8; margin: 0;">日常使いに最適な快適性とスタイルを両立</p>
+            </div>
+          </div>
+        </td>
+        <td style="width: 33.33%; padding: 25px; vertical-align: top;">
+          <div class="hover-scale fade-in" style="background: rgba(255,255,255,0.95); border-radius: 20px; overflow: hidden; backdrop-filter: blur(10px); animation-delay: 0.2s;">
+            <div style="position: relative; overflow: hidden;">
+              <img src="https://cdn.goope.jp/50488/250325195319-67e28b1fcd412.jpg" alt="フォーマル" style="width: 100%; height: 280px; object-fit: cover; transition: transform 0.5s ease;">
+            </div>
+            <div style="padding: 30px;">
+              <h3 style="font-size: 1.6em; color: #2c3e50; margin: 0 0 15px 0;">フォーマル</h3>
+              <p style="color: #666; line-height: 1.8; margin: 0;">特別な日を彩る上品で洗練されたデザイン</p>
+            </div>
+          </div>
+        </td>
+        <td style="width: 33.33%; padding: 25px; vertical-align: top;">
+          <div class="hover-scale fade-in" style="background: rgba(255,255,255,0.95); border-radius: 20px; overflow: hidden; backdrop-filter: blur(10px); animation-delay: 0.4s;">
+            <div style="position: relative; overflow: hidden;">
+              <img src="https://cdn.goope.jp/50488/250325195318-67e28b1ec3a25.jpg" alt="コンフォート" style="width: 100%; height: 280px; object-fit: cover; transition: transform 0.5s ease;">
+            </div>
+            <div style="padding: 30px;">
+              <h3 style="font-size: 1.6em; color: #2c3e50; margin: 0 0 15px 0;">コンフォート</h3>
+              <p style="color: #666; line-height: 1.8; margin: 0;">長時間履いても疲れない究極の履き心地</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* シンプルなテスト用CSS */
+.test-hero {
+  background: #f8f9fa;
+  padding: 60px 20px;
+  text-align: center;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.test-content {
+  max-width: 600px;
+}
+
+.test-title {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.test-subtitle {
+  font-size: 1.1rem;
+  color: #6c757d;
+  margin-bottom: 30px;
+}
+
+.test-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #67c522;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.test-section {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.test-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.test-card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+  .test-grid {
+    grid-template-columns: 1fr;
+  }
+  .test-title {
+    font-size: 2rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- テスト用ヒーローセクション -->
+<div class="test-hero">
+  <div class="test-content">
+    <h1 class="test-title">くつの橋本商店</h1>
+    <p class="test-subtitle">1922年創業の広島の靴の老舗です。<br>女性の輝きを足元から応援します。</p>
+    <a href="https://hs928.base.shop/" target="_blank" class="test-button">オンラインショップ</a>
+  </div>
+</div>
+
+<!-- テスト用セクション -->
+<div class="test-section">
+  <h2 style="text-align: center; color: #2c3e50; margin-bottom: 40px;">ABOUT US</h2>
+  <div class="test-grid">
+    <div class="test-card">
+      <h3 style="color: #2c3e50; margin-bottom: 15px;">女性の輝きを足元から応援する</h3>
+      <p style="color: #6c757d; line-height: 1.6;">女性が活躍する時代。女性のライフスタイルに寄り添い、支えていく。それが橋本商店の存在意義であり、ミッションだと考えています。</p>
+    </div>
+    <div class="test-card">
+      <img src="https://cdn.goope.jp/50488/250325195319-67e28b1fcd412.jpg" alt="テスト画像" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px;">
+    </div>
+  </div>
+</div>
+
+<!-- ブランドテスト -->
+<div class="test-section" style="background: #f8f9fa;">
+  <h2 style="text-align: center; color: #2c3e50; margin-bottom: 40px;">BRANDS</h2>
+  <div class="test-grid">
+    <div class="test-card">
+      <img src="https://cdn.goope.jp/50488/250325195318-67e28b1ec3a25.jpg" alt="HS" style="width: 100%; height: 150px; object-fit: cover; border-radius: 5px; margin-bottom: 15px;">
+      <h3 style="color: #2c3e50; margin-bottom: 10px;">HS（エイチエス）</h3>
+      <p style="color: #6c757d; font-size: 0.9rem;">履きやすさとデザインにこだわった当店オリジナルブランド。</p>
+    </div>
+    <div class="test-card">
+      <img src="https://cdn.goope.jp/50488/241126223256-6745ce0899d77.jpg" alt="SCORPIUS" style="width: 100%; height: 150px; object-fit: cover; border-radius: 5px; margin-bottom: 15px;">
+      <h3 style="color: #2c3e50; margin-bottom: 10px;">SCORPIUS（スコーピウス）</h3>
+      <p style="color: #6c757d; font-size: 0.9rem;">メタル素材のカッコよさとトラッドを融合させた新ブランド。</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

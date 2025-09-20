@@ -3,15 +3,21 @@ import { AboutSection } from "@/components/AboutSection";
 import { ShoppingSection } from "@/components/ShoppingSection";
 import { NewsSection } from "@/components/NewsSection";
 import { BrandsSection } from "@/components/BrandsSection";
+import { getHeroImage, getCollections, getNews } from "@/lib/microcms";
 import { SNSIcons } from "@/components/SNSIcons";
 
-export default function Home() {
+export default async function Home() {
+  // microCMSからヒーロー画像、コレクション、ニュースを取得
+  const heroImageData = await getHeroImage();
+  const collectionsData = await getCollections();
+  const newsData = await getNews();
+
   return (
     <main>
-      <HeroSection />
+      <HeroSection heroImageData={heroImageData} collectionsData={collectionsData} />
       <AboutSection />
       <ShoppingSection />
-      <NewsSection />
+      <NewsSection newsData={newsData} />
       <BrandsSection />
       <SNSIcons />
     </main>

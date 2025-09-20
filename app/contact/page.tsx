@@ -270,6 +270,9 @@ export default function ContactPage() {
                       <option value="オンラインショップについて">
                         オンラインショップについて
                       </option>
+                      <option value="ウェブ制作事業について">
+                        ウェブ制作事業について
+                      </option>
                       <option value="その他">その他</option>
                     </select>
                   </div>

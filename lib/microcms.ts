@@ -5,7 +5,28 @@ export const client = createClient({
   apiKey: process.env.MICROCMS_API_KEY ?? "",
 });
 
-// ニュース記事の型定義
+// ヒーロー画像の型定義（シンプル版）
+export interface HeroImage {
+  backgroundImage: {
+    url: string;
+    height: number;
+    width: number;
+  };
+}
+
+// コレクションの型定義
+export interface Collection {
+  id: string;
+  name: string;
+  image: {
+    url: string;
+    height: number;
+    width: number;
+  };
+  link: string;
+}
+
+// ニュース記事の型定義（シンプル版）
 export interface NewsItem {
   id: string;
   createdAt: string;
@@ -14,8 +35,7 @@ export interface NewsItem {
   revisedAt: string;
   title: string;
   content: string;
-  excerpt?: string;
-  thumbnail?: {
+  thumbnail: {
     url: string;
     height: number;
     width: number;
@@ -49,11 +69,13 @@ export const getContentBlocks = async () => {
   }
 };
 
-// ニュース一覧取得（contentBlocksから）
-export const getNews = async () => {
+// ニュース一覧取得
+export const getNews = async (): Promise<NewsItem[]> => {
   try {
-    const data = await getContentBlocks();
-    return data.filter((item: any) => item.type === "news");
+    const data = await client.get({
+      endpoint: "news",
+    });
+    return data.contents as NewsItem[];
   } catch (error) {
     console.error("Failed to fetch news:", error);
     return [];
@@ -71,8 +93,34 @@ export const getEvents = async () => {
   }
 };
 
+// ヒーロー画像取得（シンプル版）
+export const getHeroImage = async (): Promise<HeroImage | null> => {
+  try {
+    const data = await client.get({
+      endpoint: "hero-image",
+    });
+    return data as HeroImage;
+  } catch (error) {
+    console.error("Failed to fetch hero image:", error);
+    return null;
+  }
+};
+
+// コレクション一覧取得
+export const getCollections = async (): Promise<Collection[]> => {
+  try {
+    const data = await client.get({
+      endpoint: "collections",
+    });
+    return data.contents as Collection[];
+  } catch (error) {
+    console.error("Failed to fetch collections:", error);
+    return [];
+  }
+};
+
 // 個別ニュース取得
-export const getNewsById = async (id: string) => {
+export const getNewsById = async (id: string): Promise<NewsItem | null> => {
   try {
     const data = await client.get({
       endpoint: "news",
