@@ -1,9 +1,14 @@
 import { createClient } from "microcms-js-sdk";
 
-export const client = createClient({
-  serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN ?? "",
-  apiKey: process.env.MICROCMS_API_KEY ?? "",
-});
+// 環境変数の確認
+const serviceDomain = process.env.MICROCMS_SERVICE_DOMAIN;
+const apiKey = process.env.MICROCMS_API_KEY;
+
+// microCMSクライアントの初期化（環境変数が設定されている場合のみ）
+export const client = serviceDomain && apiKey ? createClient({
+  serviceDomain,
+  apiKey,
+}) : null;
 
 // ヒーロー画像の型定義（シンプル版）
 export interface HeroImage {
@@ -58,6 +63,10 @@ export interface EventItem {
 
 // コンテンツブロック一覧取得
 export const getContentBlocks = async () => {
+  if (!client) {
+    console.warn("microCMS client not initialized - returning empty array");
+    return [];
+  }
   try {
     const data = await client.get({
       endpoint: "contentBlocks",
@@ -71,6 +80,10 @@ export const getContentBlocks = async () => {
 
 // ニュース一覧取得
 export const getNews = async (): Promise<NewsItem[]> => {
+  if (!client) {
+    console.warn("microCMS client not initialized - returning empty array");
+    return [];
+  }
   try {
     const data = await client.get({
       endpoint: "news",
@@ -95,6 +108,10 @@ export const getEvents = async () => {
 
 // ヒーロー画像取得（シンプル版）
 export const getHeroImage = async (): Promise<HeroImage | null> => {
+  if (!client) {
+    console.warn("microCMS client not initialized - returning null");
+    return null;
+  }
   try {
     const data = await client.get({
       endpoint: "hero-image",
@@ -108,6 +125,10 @@ export const getHeroImage = async (): Promise<HeroImage | null> => {
 
 // コレクション一覧取得
 export const getCollections = async (): Promise<Collection[]> => {
+  if (!client) {
+    console.warn("microCMS client not initialized - returning empty array");
+    return [];
+  }
   try {
     const data = await client.get({
       endpoint: "collections",
@@ -121,6 +142,10 @@ export const getCollections = async (): Promise<Collection[]> => {
 
 // 個別ニュース取得
 export const getNewsById = async (id: string): Promise<NewsItem | null> => {
+  if (!client) {
+    console.warn("microCMS client not initialized - returning null");
+    return null;
+  }
   try {
     const data = await client.get({
       endpoint: "news",
@@ -135,6 +160,10 @@ export const getNewsById = async (id: string): Promise<NewsItem | null> => {
 
 // 個別イベント取得
 export const getEventById = async (id: string) => {
+  if (!client) {
+    console.warn("microCMS client not initialized - returning null");
+    return null;
+  }
   try {
     const data = await client.get({
       endpoint: "events",
