@@ -164,7 +164,7 @@ export default function HobbyPage() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* メッセージ */}
