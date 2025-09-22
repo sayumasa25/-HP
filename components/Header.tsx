@@ -7,11 +7,11 @@ import { motion, AnimatePresence } from "framer-motion";
 const navItems = [
   { href: "/news", label: "NEWS" },
   { href: "/company", label: "ABOUT" },
-  { href: "/hobby", label: "店長・橋本趣味の世界" },
   { href: "/hiroshima", label: "広島在住の方へ" },
   { href: "/web-development", label: "ウェブ制作事業" },
   { href: "/contact", label: "CONTACT" },
   { href: "https://hs928.base.shop/", label: "ONLINE SHOP", external: true },
+  { href: "/hobby", label: "OTHER CONTENTS" },
 ];
 
 export function Header() {

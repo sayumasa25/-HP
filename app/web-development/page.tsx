@@ -334,7 +334,7 @@ export default function WebDevelopmentPage() {
                 </div>
                 <h3 className="text-lg font-bold text-gray-800 mb-4">お打合せ</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  どんな内容にしたいのか参考URLを共有いただく。LINEやZoom等で事前お打合せ実施。
+                  どんな内容にしたいのか参考URLを共有いただく。お電話やZoom等で事前お打合せ実施。
                   <br />
                   <span className="text-blue-600 font-medium">（アイデアが湧かない場合はこちらでたたき台を作成）</span>
                 </p>
@@ -584,10 +584,6 @@ export default function WebDevelopmentPage() {
               <div className="bg-white text-gray-800 p-8 rounded-lg max-w-2xl mx-auto">
                 <h3 className="text-xl font-bold mb-4">お問い合わせ方法</h3>
                 <div className="space-y-4">
-                  <div className="flex items-center justify-center">
-                    <span className="text-green-600 text-2xl mr-3">📱</span>
-                    <span>LINE: 最も返信が早いです</span>
-                  </div>
                   <div className="flex items-center justify-center">
                     <span className="text-blue-600 text-2xl mr-3">📧</span>
                     <span>お問い合わせフォーム: 詳細な相談に</span>

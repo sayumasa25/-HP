@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function HobbyPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 pt-20">
       <div className="max-w-4xl mx-auto px-4 py-16">
         {/* ヘッダー */}
         <motion.div
@@ -14,12 +14,12 @@ export default function HobbyPage() {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-light text-gray-800 mb-6 tracking-wider">
-            店長・橋本趣味の世界
+            OTHER CONTENTS
           </h1>
-          <p className="text-lg text-gray-600 font-light">Hobby World of Hashimoto</p>
+          <p className="text-lg text-gray-600 font-light">スタッフの自己紹介と趣味の世界</p>
         </motion.div>
 
-        {/* プロフィール */}
+        {/* 店長プロフィール */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -35,22 +35,62 @@ export default function HobbyPage() {
             </div>
             <div className="md:w-2/3">
               <h2 className="text-2xl font-light text-gray-800 mb-4">
-                橋本 雅史（はしもと まさし）
+                店長・橋本昌幸（はしもとまさゆき）
               </h2>
               <p className="text-gray-600 leading-relaxed mb-4">
-                くつの橋本商店の店長として、お客様に最高の履き心地をお届けすることを使命としています。
-                仕事以外では様々な趣味に没頭し、それらの経験が商品選びや接客にも活かされています。
+                大学卒業後サラリーマンとして6年間務め、色々考えた結果、家業の世界に飛び込む。
+                レディースシューズという未知の世界だったが、自分で考えた商品やサービスがお客様に喜んでいただけることが何よりも幸福と知る。
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                <span className="font-medium">趣味:</span> バドミントン、AI
               </p>
               <p className="text-gray-600 leading-relaxed">
-                「靴は人生のパートナー」をモットーに、お客様一人ひとりに合った靴選びをサポートしています。
+                <span className="font-medium">欠点:</span> 記憶力がかなり悪い
               </p>
             </div>
           </div>
         </motion.div>
 
-        {/* 趣味セクション */}
+        {/* 代表取締役プロフィール */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-12"
+        >
+          <div className="flex flex-col md:flex-row gap-8 items-center">
+            <div className="md:w-1/3">
+              <div className="w-48 h-48 mx-auto bg-gray-200 rounded-full flex items-center justify-center">
+                <span className="text-gray-500 text-sm">代表の写真</span>
+              </div>
+            </div>
+            <div className="md:w-2/3">
+              <h2 className="text-2xl font-light text-gray-800 mb-4">
+                代表取締役・橋本良裕（はしもとよしひろ）
+              </h2>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                橋本商店の社長の看板を背負って24年。幾多の困難を乗り越え今に至る。
+                商品の目利き力はピカイチ！
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                <span className="font-medium">趣味:</span> ジャズレコード
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                様々な公民館でレコード演奏会を開き毎回満員御礼の大好評イベント。
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+                <span className="font-medium">欠点:</span> 整理整頓がかなり苦手
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* 趣味の世界セクション */}
         <div className="space-y-8">
-          {/* 写真撮影 */}
+          <h2 className="text-3xl font-light text-gray-800 mb-8 text-center">趣味の世界</h2>
+          
+          {/* 店長の趣味の世界 */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -58,28 +98,56 @@ export default function HobbyPage() {
             transition={{ duration: 0.8 }}
             className="bg-white rounded-lg shadow-sm border border-gray-200 p-8"
           >
-            <div className="flex flex-col md:flex-row gap-8">
-              <div className="md:w-1/3">
-                <div className="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center">
-                  <span className="text-gray-500 text-sm">📸 写真作品</span>
-                </div>
+            <h3 className="text-2xl font-light text-gray-800 mb-6 text-center">店長・橋本の趣味の世界</h3>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* 音楽生成AI */}
+              <div className="text-center">
+                <a
+                  href="https://www.youtube.com/@%E3%81%9F%E3%82%8D%E3%81%86%E3%81%BE%E3%83%BC-v7w"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:opacity-80 transition-opacity"
+                >
+                  <div className="mb-4">
+                    <Image
+                      src="/image-218-1536x768.png"
+                      alt="音楽生成AIを使った音楽配信"
+                      width={400}
+                      height={200}
+                      className="w-full h-48 object-cover rounded-lg border border-gray-200"
+                    />
+                  </div>
+                  <h4 className="text-lg font-medium text-gray-800 mb-2">🎵 音楽生成AI</h4>
+                  <p className="text-gray-600 text-sm">音楽生成AIを使った音楽配信</p>
+                </a>
               </div>
-              <div className="md:w-2/3">
-                <h3 className="text-xl font-light text-gray-800 mb-4">📸 写真撮影</h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  風景写真を中心に、広島の美しい景色を撮影しています。
-                  特に宮島の四季折々の表情を捉えることが好きで、
-                  早朝や夕暮れ時の幻想的な光景を求めて足を運んでいます。
-                </p>
-                <p className="text-gray-600 leading-relaxed">
-                  撮影で培った「瞬間を捉える集中力」は、
-                  お客様のニーズを的確に把握する接客にも活かされています。
-                </p>
+
+              {/* 公式キャラクター */}
+              <div className="text-center">
+                <a
+                  href="https://x.com/neko_pumps"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:opacity-80 transition-opacity"
+                >
+                  <div className="mb-4">
+                    <Image
+                      src="/⑫.jpg"
+                      alt="くつの橋本商店の公式キャラクター"
+                      width={400}
+                      height={200}
+                      className="w-full h-48 object-cover rounded-lg border border-gray-200"
+                    />
+                  </div>
+                  <h4 className="text-lg font-medium text-gray-800 mb-2">🐱 公式キャラクター</h4>
+                  <p className="text-gray-600 text-sm">くつの橋本商店の公式キャラクター運用</p>
+                </a>
               </div>
             </div>
           </motion.div>
 
-          {/* 読書 */}
+          {/* 代表取締役の趣味の世界 */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -87,80 +155,25 @@ export default function HobbyPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="bg-white rounded-lg shadow-sm border border-gray-200 p-8"
           >
-            <div className="flex flex-col md:flex-row-reverse gap-8">
-              <div className="md:w-1/3">
-                <div className="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center">
-                  <span className="text-gray-500 text-sm">📚 愛読書</span>
-                </div>
+            <h3 className="text-2xl font-light text-gray-800 mb-6 text-center">代表取締役・橋本の趣味の世界</h3>
+            
+            <div className="text-center">
+              <div className="mb-6">
+                <Image
+                  src="/ジャズ.jpg"
+                  alt="ジャズレコードコレクション"
+                  width={600}
+                  height={300}
+                  className="w-full max-w-2xl mx-auto h-64 object-cover rounded-lg border border-gray-200"
+                />
               </div>
-              <div className="md:w-2/3">
-                <h3 className="text-xl font-light text-gray-800 mb-4">📚 読書</h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  ビジネス書から小説まで幅広く読書を楽しんでいます。
-                  特に経営に関する書籍や、接客・サービス業に関する本を好んで読み、
-                  日々の業務改善のヒントを探しています。
+              <h4 className="text-xl font-medium text-gray-800 mb-4">🎷 ジャズレコードの世界</h4>
+              <div className="max-w-2xl mx-auto text-left space-y-4">
+                <p className="text-gray-600 leading-relaxed">
+                  レコードのコレクションは数千枚！それが高じて公民館でジャズのレコード演奏会を実施したら大盛況。
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  最近のお気に入りは「おもてなしの心」に関する書籍。
-                  お客様により良いサービスを提供するための学びを続けています。
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* 料理 */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="bg-white rounded-lg shadow-sm border border-gray-200 p-8"
-          >
-            <div className="flex flex-col md:flex-row gap-8">
-              <div className="md:w-1/3">
-                <div className="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center">
-                  <span className="text-gray-500 text-sm">🍳 料理作品</span>
-                </div>
-              </div>
-              <div className="md:w-2/3">
-                <h3 className="text-xl font-light text-gray-800 mb-4">🍳 料理</h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  休日には家族のために料理を作ることが多く、
-                  特に広島の郷土料理やお好み焼きを得意としています。
-                  地元の新鮮な食材を使った料理を研究するのが楽しみです。
-                </p>
-                <p className="text-gray-600 leading-relaxed">
-                  料理で培った「素材を活かす」という考え方は、
-                  靴の素材の良さを最大限に引き出す商品選びにも通じています。
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* ガーデニング */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="bg-white rounded-lg shadow-sm border border-gray-200 p-8"
-          >
-            <div className="flex flex-col md:flex-row-reverse gap-8">
-              <div className="md:w-1/3">
-                <div className="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center">
-                  <span className="text-gray-500 text-sm">🌱 ガーデン</span>
-                </div>
-              </div>
-              <div className="md:w-2/3">
-                <h3 className="text-xl font-light text-gray-800 mb-4">🌱 ガーデニング</h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  自宅の庭で季節の花や野菜を育てています。
-                  特にバラの栽培に力を入れており、毎年美しい花を咲かせることを目標にしています。
-                  土作りから始める丁寧な作業が好きです。
-                </p>
-                <p className="text-gray-600 leading-relaxed">
-                  植物を育てる「継続的なケア」の大切さは、
-                  お客様との長期的な信頼関係を築く接客姿勢にも反映されています。
+                  毎回満員御礼の大好評イベントとなり、地域の皆様にジャズの魅力をお伝えしています。
                 </p>
               </div>
             </div>
@@ -172,16 +185,16 @@ export default function HobbyPage() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
           className="bg-blue-50 rounded-lg p-8 mt-12 text-center"
         >
           <h3 className="text-xl font-light text-gray-800 mb-4">
-            趣味から学ぶ、おもてなしの心
+            個性豊かなスタッフがお待ちしています
           </h3>
           <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
-            様々な趣味を通じて学んだ「丁寧さ」「継続性」「創造性」を、
-            日々の接客やサービスに活かしています。
-            お客様一人ひとりに合った最適な靴選びを、心を込めてサポートいたします。
+            それぞれ異なる個性と趣味を持つスタッフが、
+            お客様に最適な靴選びと心のこもったサービスを提供いたします。
+            ぜひお気軽にお声かけください。
           </p>
         </motion.div>
       </div>
