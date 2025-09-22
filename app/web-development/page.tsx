@@ -8,29 +8,45 @@ export default function WebDevelopmentPage() {
   return (
     <main className="min-h-screen bg-white pt-20">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100">
-        {/* 背景パターン */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-indigo-600/20"></div>
+      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-blue-100 via-indigo-200 to-purple-100">
+        {/* キラキラ背景エフェクト */}
+        <div className="absolute inset-0">
+          {/* メイングラデーション */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 via-indigo-500/15 to-purple-400/20"></div>
+          
+          {/* キラキラパターン */}
           <div 
-            className="w-full h-full bg-repeat"
+            className="absolute inset-0 opacity-30"
             style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234F46E5' fill-opacity='0.15'%3E%3Cpath d='M20 20h8v8h-8zM36 20h8v8h-8zM52 20h8v8h-8zM20 36h8v8h-8zM36 36h8v8h-8zM52 36h8v8h-8zM20 52h8v8h-8zM36 52h8v8h-8zM52 52h8v8h-8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+              backgroundImage: `radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.3) 0%, transparent 50%), 
+                               radial-gradient(circle at 75% 75%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
+                               radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.2) 0%, transparent 50%)`,
+              backgroundSize: '100px 100px, 150px 150px, 200px 200px',
+              animation: 'sparkle 8s ease-in-out infinite'
             }}
           ></div>
+          
+          {/* 動的な光の点 */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-60 animate-pulse"></div>
+            <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-indigo-300 rounded-full opacity-80 animate-ping"></div>
+            <div className="absolute bottom-1/4 left-1/3 w-3 h-3 bg-purple-300 rounded-full opacity-40 animate-pulse"></div>
+            <div className="absolute top-2/3 right-1/4 w-1 h-1 bg-blue-300 rounded-full opacity-70 animate-ping"></div>
+            <div className="absolute bottom-1/3 right-2/3 w-2 h-2 bg-indigo-400 rounded-full opacity-50 animate-pulse"></div>
+          </div>
         </div>
         
-        {/* 装飾的なアイコン */}
-        <div className="absolute top-10 left-10 opacity-10">
+        {/* 装飾的なアイコン（より控えめに） */}
+        <div className="absolute top-10 left-10 opacity-20 animate-float">
           <div className="text-6xl text-blue-600">💻</div>
         </div>
-        <div className="absolute top-20 right-20 opacity-10">
+        <div className="absolute top-20 right-20 opacity-20 animate-float-delayed">
           <div className="text-5xl text-indigo-600">🚀</div>
         </div>
-        <div className="absolute bottom-20 left-20 opacity-10">
+        <div className="absolute bottom-20 left-20 opacity-20 animate-float">
           <div className="text-4xl text-blue-500">⚡</div>
         </div>
-        <div className="absolute bottom-10 right-10 opacity-10">
+        <div className="absolute bottom-10 right-10 opacity-20 animate-float-delayed">
           <div className="text-5xl text-indigo-500">🎨</div>
         </div>
         
@@ -583,18 +599,10 @@ export default function WebDevelopmentPage() {
                 </div>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="https://lin.ee/XQDGftP"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-green-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-600 transition-colors"
-                >
-                  LINEで相談する
-                </a>
+              <div className="flex justify-center">
                 <a
                   href="/contact"
-                  className="bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors"
+                  className="bg-blue-600 text-white px-12 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors shadow-lg"
                 >
                   お問い合わせフォーム
                 </a>
