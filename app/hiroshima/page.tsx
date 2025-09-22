@@ -104,13 +104,23 @@ export default function HiroshimaPage() {
                 </div>
               </div>
               <div>
-                <img
-                  src="/70001.jpg"
-                  alt="本革やわらかローファー"
-                  className="w-full h-80 object-contain border border-gray-200 rounded-lg bg-gray-50"
-                  loading="lazy"
-                  decoding="async"
-                />
+                <a
+                  href="https://item.rakuten.co.jp/hs928/leather-loafers/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:opacity-80 transition-opacity"
+                >
+                  <img
+                    src="/70001.jpg"
+                    alt="本革やわらかローファー - 楽天で詳細を見る"
+                    className="w-full h-80 object-contain border border-gray-200 rounded-lg bg-gray-50 cursor-pointer"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <p className="text-center text-blue-600 text-sm mt-2 hover:underline">
+                    🛒 楽天で商品詳細を見る
+                  </p>
+                </a>
               </div>
             </div>
           </motion.div>
