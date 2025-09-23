@@ -140,8 +140,8 @@ export default function HobbyPage() {
                       className="w-full h-48 object-cover rounded-lg border border-gray-200"
                     />
                   </div>
-                  <h4 className="text-lg font-medium text-gray-800 mb-2">🐱 公式キャラクター</h4>
-                  <p className="text-gray-600 text-sm">くつの橋本商店の公式キャラクター運用</p>
+                  <h4 className="text-lg font-medium text-gray-800 mb-2">🐱 公式キャラクター「おつかれマリー」</h4>
+                  <p className="text-gray-600 text-sm">くつの橋本商店の公式キャラクター「おつかれマリー」の運用</p>
                 </a>
               </div>
             </div>

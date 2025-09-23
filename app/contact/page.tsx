@@ -130,9 +130,7 @@ export default function ContactPage() {
                     <p className="text-gray-600 font-light">
                       平日 9:00 - 18:00
                       <br />
-                      土曜 9:00 - 17:00
-                      <br />
-                      日曜・祝日 定休日
+                      土日祝 定休日
                     </p>
                   </div>
 

@@ -16,6 +16,11 @@ export const metadata = {
     template: "%s | Hashimoto Shoes",
   },
   description: "広島から婦人靴を発信する専門商社",
+  icons: {
+    icon: "/ファビコン.png",
+    shortcut: "/ファビコン.png",
+    apple: "/ファビコン.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

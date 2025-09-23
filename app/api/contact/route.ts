@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     // メール内容
     const mailOptions = {
       from: process.env.SMTP_FROM ?? "noreply@example.com",
-      to: process.env.SMTP_TO ?? "admin@example.com",
+      to: process.env.SMTP_TO ?? "m-hashimoto1125@outlook.jp",
       subject: `【くつの橋本商店】お問い合わせ: ${subject}`,
       html: `
         <h2>お問い合わせを受信しました</h2>
