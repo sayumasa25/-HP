@@ -32,14 +32,22 @@ export default function ContactPage() {
     setIsSubmitting(true);
 
     try {
-      // Netlify Formsに送信
-      const formElement = e.target as HTMLFormElement;
-      const formData = new FormData(formElement);
-      
-      const response = await fetch("/", {
+      // Web3Formsに送信
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "8c5f4d2a-1b3e-4f7d-9a2c-6e8b5d4f1a9c",
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          subject: `【くつの橋本商店】${formData.subject}`,
+          message: formData.message,
+          to_email: "m-hashimoto1125@outlook.jp",
+        }),
       });
 
       if (response.ok) {
@@ -177,11 +185,7 @@ export default function ContactPage() {
                 <form 
                   onSubmit={handleSubmit} 
                   className="space-y-6"
-                  data-netlify="true"
-                  name="contact"
-                  method="POST"
                 >
-                  <input type="hidden" name="form-name" value="contact" />
                   <div>
                     <label
                       htmlFor="name"
