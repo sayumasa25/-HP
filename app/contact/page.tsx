@@ -30,6 +30,13 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    
+    // 必須項目チェック
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      setSubmitStatus("error");
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       // Web3Formsに送信
@@ -37,20 +44,34 @@ export default function ContactPage() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json"
         },
         body: JSON.stringify({
-          access_key: "8c5f4d2a-1b3e-4f7d-9a2c-6e8b5d4f1a9c",
+          access_key: "5dd16607-3961-4a19-8365-48ec1b1b03ae",
           name: formData.name,
           email: formData.email,
-          company: formData.company,
-          phone: formData.phone,
           subject: `【くつの橋本商店】${formData.subject}`,
-          message: formData.message,
-          to_email: "m-hashimoto1125@outlook.jp",
+          message: `
+お名前: ${formData.name}
+メールアドレス: ${formData.email}
+${formData.company ? `会社名・団体名: ${formData.company}\n` : ''}${formData.phone ? `電話番号: ${formData.phone}\n` : ''}
+件名: ${formData.subject}
+
+お問い合わせ内容:
+${formData.message}
+
+---
+送信元: https://www.hs1922.com/
+送信日時: ${new Date().toLocaleString('ja-JP')}
+          `.trim(),
+          from_name: formData.name,
+          reply_to: formData.email,
         }),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+      
+      if (result.success) {
         setSubmitStatus("success");
         setFormData({
           name: "",
@@ -61,6 +82,7 @@ export default function ContactPage() {
           message: "",
         });
       } else {
+        console.error("Web3Forms Error:", result);
         setSubmitStatus("error");
       }
     } catch (error) {
