@@ -6,6 +6,9 @@ import { BrandsSection } from "@/components/BrandsSection";
 import { getHeroImage, getCollections, getNews } from "@/lib/microcms";
 import { SNSIcons } from "@/components/SNSIcons";
 
+// ISR設定: 60秒ごとにデータを更新
+export const revalidate = 60;
+
 export default async function Home() {
   // microCMSからヒーロー画像、コレクション、ニュースを取得
   const heroImageData = await getHeroImage();
