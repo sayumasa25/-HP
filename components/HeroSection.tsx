@@ -18,10 +18,13 @@ export function HeroSection({ heroImageData, collectionsData }: HeroSectionProps
       <section className="relative min-h-screen bg-white flex items-center justify-center overflow-hidden">
         {/* Large Hero Image */}
         <div className="absolute inset-0">
-          <img
+          <Image
             src={imageUrl}
             alt="美しい女性用シューズコレクション - エレガントで上品なデザイン"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
@@ -158,12 +161,15 @@ export function HeroSection({ heroImageData, collectionsData }: HeroSectionProps
                 animate={{ opacity: 1, y: 0 }}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <img
-                  src={collection.image.url}
-                  alt={collection.name}
-                  className="w-full aspect-square object-contain bg-gray-100 border border-gray-200 mb-4"
-                  loading="lazy"
-                />
+                <div className="relative w-full aspect-square bg-gray-100 border border-gray-200 mb-4">
+                  <Image
+                    src={collection.image.url}
+                    alt={collection.name}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+                  />
+                </div>
                 <h3 className="text-lg font-light text-gray-800 tracking-wide">
                   {collection.name}
                 </h3>

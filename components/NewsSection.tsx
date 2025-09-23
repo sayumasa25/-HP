@@ -1,7 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
-import { NewsItem } from "@/lib/microcms";
 import Link from "next/link";
+import Image from "next/image";
+import { NewsItem } from "@/lib/microcms";
 
 interface NewsSectionProps {
   newsData: NewsItem[];
@@ -54,12 +55,16 @@ export function NewsSection({ newsData }: NewsSectionProps) {
             >
               <Link href={`/news/${item.id}`} className="block p-8">
                 <div className="flex flex-col md:flex-row gap-6">
-                  <div className="md:w-1/3">
-                    <img
-                      src={item.thumbnail.url}
-                      alt={item.title}
-                      className="w-full h-48 md:h-32 object-cover border border-gray-300"
-                    />
+                  <div className="md:w-1/3 relative">
+                    <div className="relative w-full h-48 md:h-32 border border-gray-300">
+                      <Image
+                        src={item.thumbnail.url}
+                        alt={item.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    </div>
                   </div>
                   <div className="md:w-2/3">
                     <div className="flex items-center gap-4 mb-4">
