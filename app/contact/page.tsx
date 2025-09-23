@@ -27,36 +27,40 @@ export default function ContactPage() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // メール本文を作成
-    const emailBody = `
-お名前: ${formData.name}
-メールアドレス: ${formData.email}
-${formData.company ? `会社名・団体名: ${formData.company}` : ''}
-${formData.phone ? `電話番号: ${formData.phone}` : ''}
-件名: ${formData.subject}
+    setIsSubmitting(true);
 
-お問い合わせ内容:
-${formData.message}
-    `.trim();
+    try {
+      // Netlify Formsに送信
+      const formElement = e.target as HTMLFormElement;
+      const formData = new FormData(formElement);
+      
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
+      });
 
-    // メールアプリを開く
-    const mailtoLink = `mailto:m-hashimoto1125@outlook.jp?subject=${encodeURIComponent(`【くつの橋本商店】${formData.subject}`)}&body=${encodeURIComponent(emailBody)}`;
-    
-    window.location.href = mailtoLink;
-    
-    // 成功メッセージを表示
-    setSubmitStatus("success");
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      phone: "",
-      subject: "",
-      message: "",
-    });
+      if (response.ok) {
+        setSubmitStatus("success");
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      console.error("送信エラー:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -160,7 +164,7 @@ ${formData.message}
 
                 {submitStatus === "success" && (
                   <div className="mb-6 p-4 bg-green-50 border border-green-200 text-green-800 font-light">
-                    メールアプリが開きました。送信ボタンを押してお問い合わせを完了してください。
+                    お問い合わせありがとうございます。内容を確認の上、ご連絡いたします。
                   </div>
                 )}
 
@@ -170,7 +174,14 @@ ${formData.message}
                   </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form 
+                  onSubmit={handleSubmit} 
+                  className="space-y-6"
+                  data-netlify="true"
+                  name="contact"
+                  method="POST"
+                >
+                  <input type="hidden" name="form-name" value="contact" />
                   <div>
                     <label
                       htmlFor="name"
