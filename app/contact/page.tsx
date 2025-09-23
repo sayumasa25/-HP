@@ -27,37 +27,36 @@ export default function ContactPage() {
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    
+    // メール本文を作成
+    const emailBody = `
+お名前: ${formData.name}
+メールアドレス: ${formData.email}
+${formData.company ? `会社名・団体名: ${formData.company}` : ''}
+${formData.phone ? `電話番号: ${formData.phone}` : ''}
+件名: ${formData.subject}
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+お問い合わせ内容:
+${formData.message}
+    `.trim();
 
-      if (response.ok) {
-        setSubmitStatus("success");
-        setFormData({
-          name: "",
-          email: "",
-          company: "",
-          phone: "",
-          subject: "",
-          message: "",
-        });
-      } else {
-        setSubmitStatus("error");
-      }
-    } catch (error) {
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
+    // メールアプリを開く
+    const mailtoLink = `mailto:m-hashimoto1125@outlook.jp?subject=${encodeURIComponent(`【くつの橋本商店】${formData.subject}`)}&body=${encodeURIComponent(emailBody)}`;
+    
+    window.location.href = mailtoLink;
+    
+    // 成功メッセージを表示
+    setSubmitStatus("success");
+    setFormData({
+      name: "",
+      email: "",
+      company: "",
+      phone: "",
+      subject: "",
+      message: "",
+    });
   };
 
   return (
@@ -161,7 +160,7 @@ export default function ContactPage() {
 
                 {submitStatus === "success" && (
                   <div className="mb-6 p-4 bg-green-50 border border-green-200 text-green-800 font-light">
-                    お問い合わせありがとうございます。内容を確認の上、ご連絡いたします。
+                    メールアプリが開きました。送信ボタンを押してお問い合わせを完了してください。
                   </div>
                 )}
 
