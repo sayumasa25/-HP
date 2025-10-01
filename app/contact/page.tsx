@@ -1,8 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function ContactPage() {
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,47 +33,53 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
     
+    console.log("フォーム送信開始:", formData);
+    
     // 必須項目チェック
     if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      console.error("必須項目エラー:", { name: formData.name, email: formData.email, subject: formData.subject, message: formData.message });
       setSubmitStatus("error");
       setIsSubmitting(false);
       return;
     }
 
+    // reCAPTCHA検証
+    const recaptchaValue = recaptchaRef.current?.getValue();
+    if (!recaptchaValue) {
+      alert("reCAPTCHA認証を完了してください。");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      // Web3Formsに送信
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const requestData = {
+        accessKey: "sf_gdnljhi1j8a1fm60bh3b4hl7",
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+        replyTo: formData.email,
+        "g-recaptcha-response": recaptchaValue
+      };
+
+      console.log("StaticForms送信データ:", requestData);
+
+      // StaticFormsに送信
+      const response = await fetch("https://api.staticforms.xyz/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
-        body: JSON.stringify({
-          access_key: "5dd16607-3961-4a19-8365-48ec1b1b03ae",
-          name: formData.name,
-          email: formData.email,
-          subject: `【くつの橋本商店】${formData.subject}`,
-          message: `
-お名前: ${formData.name}
-メールアドレス: ${formData.email}
-${formData.company ? `会社名・団体名: ${formData.company}\n` : ''}${formData.phone ? `電話番号: ${formData.phone}\n` : ''}
-件名: ${formData.subject}
-
-お問い合わせ内容:
-${formData.message}
-
----
-送信元: https://www.hs1922.com/
-送信日時: ${new Date().toLocaleString('ja-JP')}
-          `.trim(),
-          from_name: formData.name,
-          reply_to: formData.email,
-        }),
+        body: JSON.stringify(requestData),
       });
 
-      const result = await response.json();
+      console.log("レスポンス:", response.status, response.statusText);
       
-      if (result.success) {
+      // StaticFormsは成功時に307リダイレクトを返すため、ステータスコードで判定
+      if (response.status === 307 || response.ok) {
         setSubmitStatus("success");
         setFormData({
           name: "",
@@ -81,8 +89,9 @@ ${formData.message}
           subject: "",
           message: "",
         });
+        recaptchaRef.current?.reset();
       } else {
-        console.error("Web3Forms Error:", result);
+        console.error("StaticForms Error:", response.status, response.statusText);
         setSubmitStatus("error");
       }
     } catch (error) {
@@ -327,6 +336,15 @@ ${formData.message}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 focus:border-gray-500 focus:outline-none transition-colors font-light resize-vertical"
                       placeholder="お問い合わせ内容をご記入ください"
+                    />
+                  </div>
+
+                  {/* reCAPTCHA v2 */}
+                  <div className="flex justify-center">
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey="6Ld5ENsrAAAAAMiQvTaNieSPOmMBMW6WmzVMQKvf"
+                      theme="light"
                     />
                   </div>
 
