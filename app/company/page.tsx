@@ -457,11 +457,9 @@ export default function CompanyPage() {
                             <h3 className="text-lg font-medium text-gray-800">新時代へ</h3>
                           </div>
                           <p className="text-gray-700 leading-relaxed">
-                            4代目 橋本昌幸が代表取締役に就任（予定）。
+                            4代目 橋本昌幸が2月1日代表取締役に就任
                           </p>
-                          <div className="mt-3 inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
-                            予定
-                          </div>
+
                           {/* デスクトップ用矢印 */}
                           <div className="hidden md:block absolute top-1/2 -right-3 w-0 h-0 border-l-6 border-l-blue-50 border-t-6 border-t-transparent border-b-6 border-b-transparent transform -translate-y-1/2"></div>
                         </div>
@@ -477,9 +475,7 @@ export default function CompanyPage() {
                           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
                             <p className="text-white text-sm font-medium text-center">4代目 橋本昌幸</p>
                           </div>
-                          <div className="absolute top-3 right-3 bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium border border-blue-300">
-                            予定
-                          </div>
+
                         </div>
                       </div>
                       {/* 中央のドット */}
