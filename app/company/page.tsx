@@ -26,6 +26,110 @@ export default function CompanyPage() {
         </div>
       </section>
 
+      {/* 代表挨拶セクション */}
+      <section className="py-20 bg-white">
+        <div className="max-w-screen-xl mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mb-16"
+          >
+            <h2
+              className="text-3xl md:text-4xl font-light text-gray-800 mb-8 text-center tracking-wide"
+              style={{
+                fontFamily:
+                  "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif",
+              }}
+            >
+              GREETING
+            </h2>
+            <p className="text-center text-gray-600 font-light mb-12">
+              代表挨拶
+            </p>
+
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+              <div className="grid md:grid-cols-2 gap-0">
+                {/* 代表写真 */}
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="relative h-96 md:h-full min-h-[400px]"
+                >
+                  <img
+                    src="/代表挨拶.jpg"
+                    alt="代表取締役 橋本昌幸"
+                    className="w-full h-full object-cover"
+                    style={{ objectPosition: 'center top' }}
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                    <p className="text-white text-sm font-light">代表取締役</p>
+                    <p
+                      className="text-white text-xl font-medium tracking-wider"
+                      style={{
+                        fontFamily:
+                          "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif",
+                      }}
+                    >
+                      橋本 昌幸
+                    </p>
+                  </div>
+                </motion.div>
+
+                {/* 挨拶文 */}
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="p-8 md:p-12 flex items-center"
+                >
+                  <div>
+                    <h3
+                      className="text-xl md:text-2xl font-medium text-gray-800 mb-6 leading-relaxed"
+                      style={{
+                        fontFamily:
+                          "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif",
+                      }}
+                    >
+                      100年の歩みに感謝し、
+                      <br />
+                      これからも一歩ずつ。
+                    </h3>
+                    <div className="space-y-4 text-gray-700 font-light leading-relaxed">
+                      <p>
+                        当社は1922年の創業以来、広島の地で婦人靴の卸売業を営み、おかげさまで100年を超える歴史を重ねてまいりました。これもひとえに、お客様や取引先の皆様のご支援の賜物と、心より感謝申し上げます。
+                      </p>
+                      <p>
+                        時代とともにお客様のニーズは変化していますが、「品質の良い靴を、お求めやすい価格で」という創業以来の想いは変わりません。全国各地のデパートやイベント会場でお客様と直接お会いし、お声を伺いながら、一足一足丁寧にお届けしてまいります。
+                      </p>
+                      <p>
+                        先代から受け継いだ信頼と実績を大切にしながら、これからもお客様の足元を美しく彩るお手伝いを続けてまいりますので、どうぞよろしくお願いいたします。
+                      </p>
+                    </div>
+                    <div className="mt-8 text-right">
+                      <p className="text-sm text-gray-500 font-light">株式会社橋本商店</p>
+                      <p
+                        className="text-lg text-gray-800 font-medium mt-1"
+                        style={{
+                          fontFamily:
+                            "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif",
+                        }}
+                      >
+                        代表取締役　橋本 昌幸
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* 会社概要セクション */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-screen-xl mx-auto px-4">
@@ -54,7 +158,7 @@ export default function CompanyPage() {
                 {/* 会社情報 */}
                 <div className="p-8 md:p-12">
                   <div className="space-y-4 text-gray-700 font-light">
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, x: -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -64,7 +168,7 @@ export default function CompanyPage() {
                       <span className="font-medium mb-1 md:mb-0">会社名</span>
                       <span>株式会社橋本商店</span>
                     </motion.div>
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, x: -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -74,7 +178,7 @@ export default function CompanyPage() {
                       <span className="font-medium mb-1 md:mb-0">インボイス登録番号</span>
                       <span>T6240001008896</span>
                     </motion.div>
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, x: -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -84,7 +188,7 @@ export default function CompanyPage() {
                       <span className="font-medium mb-1 md:mb-0">代表者</span>
                       <span>代表取締役社長　橋本良裕</span>
                     </motion.div>
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, x: -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -94,7 +198,7 @@ export default function CompanyPage() {
                       <span className="font-medium mb-1 md:mb-0">住所</span>
                       <span className="md:text-right">広島県 広島市西区商工センター2丁目9-32</span>
                     </motion.div>
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, x: -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -104,7 +208,7 @@ export default function CompanyPage() {
                       <span className="font-medium mb-1 md:mb-0">アクセス</span>
                       <span className="md:text-right">JR新井口駅より徒歩14分。エクセル様の斜め向かいです。駐車場ご利用いただけます。</span>
                     </motion.div>
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, x: -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -114,7 +218,7 @@ export default function CompanyPage() {
                       <span className="font-medium mb-1 md:mb-0">創立</span>
                       <span>1922年11月</span>
                     </motion.div>
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, x: -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -124,7 +228,7 @@ export default function CompanyPage() {
                       <span className="font-medium mb-1 md:mb-0">設立</span>
                       <span>1952年1月</span>
                     </motion.div>
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, x: -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -134,7 +238,7 @@ export default function CompanyPage() {
                       <span className="font-medium mb-1 md:mb-0">電話番号</span>
                       <span>082-277-2671</span>
                     </motion.div>
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, x: -50 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
@@ -148,7 +252,7 @@ export default function CompanyPage() {
                 </div>
 
                 {/* Googleマップ */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, x: 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -198,7 +302,7 @@ export default function CompanyPage() {
               <div className="relative">
                 {/* 縦線（デスクトップ用） */}
                 <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-200 via-blue-400 to-orange-400 transform -translate-x-1/2"></div>
-                
+
                 <div className="space-y-0">
                   {/* 1922年 */}
                   <motion.div
@@ -454,7 +558,7 @@ export default function CompanyPage() {
                             <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">
                               2026
                             </div>
-                            <h3 className="text-lg font-medium text-gray-800">新時代へ</h3>
+                            <h3 className="text-lg font-medium text-gray-800">新体制へ</h3>
                           </div>
                           <p className="text-gray-700 leading-relaxed">
                             4代目 橋本昌幸が2月1日代表取締役に就任

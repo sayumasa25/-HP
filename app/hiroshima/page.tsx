@@ -33,7 +33,7 @@ export default function HiroshimaPage() {
               広島の皆様を心よりお迎えしております！<br />
               <span className="text-blue-600 font-medium">年に数回だけの特別なファミリーセール</span>をお見逃しなく。
             </motion.p>
-            
+
             {/* LINE登録バナー */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -50,9 +50,9 @@ export default function HiroshimaPage() {
                   <p className="text-sm text-gray-600">年に数回のみ配信なのでご安心ください</p>
                 </div>
               </div>
-              <a 
-                href="https://lin.ee/XQDGftP" 
-                target="_blank" 
+              <a
+                href="https://lin.ee/XQDGftP"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full bg-green-500 text-white py-3 rounded-lg font-medium hover:bg-green-600 transition-colors text-center"
               >
@@ -97,7 +97,7 @@ export default function HiroshimaPage() {
                 </p>
                 <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
                   <p className="text-blue-800 font-medium mb-2">商品一例：本革やわらかローファー</p>
-                  <p className="text-blue-700 text-lg font-medium">¥6,300+税</p>
+                  <p className="text-blue-700 text-lg font-medium">¥6,800+税</p>
                   <p className="text-blue-600 text-sm mt-2">
                     楽天ランキング1位獲得！おしゃれでお買い得、履きやすさにもこだわった人気商品です。
                   </p>
@@ -164,9 +164,9 @@ export default function HiroshimaPage() {
                     LINEご登録の方にのみお知らせが届きます。
                   </p>
                   <div className="mt-4">
-                    <a 
-                      href="https://lin.ee/XQDGftP" 
-                      target="_blank" 
+                    <a
+                      href="https://lin.ee/XQDGftP"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="block w-full bg-green-500 text-white py-2 px-4 rounded text-sm font-medium hover:bg-green-600 transition-colors text-center"
                     >
@@ -309,7 +309,7 @@ export default function HiroshimaPage() {
 
       {/* 画像拡大モーダル */}
       {selectedImage && (
-        <div 
+        <div
           className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
           onClick={() => setSelectedImage(null)}
         >
