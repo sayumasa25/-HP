@@ -427,17 +427,21 @@ export default function WebDevelopmentPage() {
                 className="bg-white p-8 rounded-lg shadow-sm border border-gray-200"
               >
                 <div className="mb-6">
-                  <div className="w-full h-48 bg-gradient-to-br from-green-100 to-blue-100 rounded-lg flex items-center justify-center mb-4">
-                    <span className="text-gray-500 text-sm">サイトプレビュー</span>
+                  <div className="w-full h-48 rounded-lg overflow-hidden mb-4">
+                    <img
+                      src="/hptop.jpg"
+                      alt="くつの橋本商店 サイトプレビュー"
+                      className="w-full h-full object-cover object-top"
+                    />
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-4">サバイバレー</h3>
+                <h3 className="text-xl font-bold text-gray-800 mb-4">くつの橋本商店</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  アウトドア用品・サバイバルグッズの専門サイト。
-                  商品カタログとブログ機能を実装。
+                  1922年創業、広島の履物専門店のコーポレートサイト。
+                  microCMSとNext.jsで構築した自社サイト。
                 </p>
                 <a
-                  href="https://luxury-cannoli-ee64d6.netlify.app/"
+                  href="https://www.hs1922.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
