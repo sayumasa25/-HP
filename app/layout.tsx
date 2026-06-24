@@ -16,6 +16,9 @@ export const metadata = {
     template: "%s | くつの橋本商店",
   },
   description: "広島から婦人靴を発信する専門商社",
+  verification: {
+    google: "uWexuxJor-0nmld_0m-Hvt_OdGORY-SlAV0YOpFJotM",
+  },
   icons: {
     icon: "/ファビコン.png",
     shortcut: "/ファビコン.png",
