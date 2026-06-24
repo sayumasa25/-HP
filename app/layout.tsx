@@ -12,8 +12,8 @@ const playfair = Playfair_Display({
 
 export const metadata = {
   title: {
-    default: "Hashimoto Shoes",
-    template: "%s | Hashimoto Shoes",
+    default: "くつの橋本商店",
+    template: "%s | くつの橋本商店",
   },
   description: "広島から婦人靴を発信する専門商社",
   icons: {
