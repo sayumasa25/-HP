@@ -454,8 +454,12 @@ export default function WebDevelopmentPage() {
                 className="bg-white p-8 rounded-lg shadow-sm border border-gray-200"
               >
                 <div className="mb-6">
-                  <div className="w-full h-48 bg-gradient-to-br from-pink-100 to-purple-100 rounded-lg flex items-center justify-center mb-4">
-                    <span className="text-gray-500 text-sm">サイトプレビュー</span>
+                  <div className="w-full h-48 rounded-lg overflow-hidden mb-4">
+                    <img
+                      src="/solana-preview.jpg"
+                      alt="ケアステーションソラナ広島 サイトプレビュー"
+                      className="w-full h-full object-cover object-top"
+                    />
                   </div>
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 mb-4">ケアステーションソラナ広島</h3>
@@ -464,7 +468,7 @@ export default function WebDevelopmentPage() {
                   サービス紹介とお問い合わせ機能を実装。
                 </p>
                 <a
-                  href="https://68cec67a21e9b86e73efe141--zingy-zuccutto-d23b50.netlify.app/"
+                  href="https://www.solana-care.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-purple-700 transition-colors"
