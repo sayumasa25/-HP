@@ -52,50 +52,30 @@ export default function ContactPage() {
     }
 
     try {
-      const requestData = {
-        accessKey: "sf_gdnljhi1j8a1fm60bh3b4hl7",
-        name: formData.name,
-        email: formData.email,
-        company: formData.company,
-        phone: formData.phone,
-        subject: formData.subject,
-        message: formData.message,
-        replyTo: formData.email,
-        "g-recaptcha-response": recaptchaValue
-      };
-
-      console.log("StaticForms送信データ:", requestData);
-
-      // StaticFormsに送信
-      const response = await fetch("https://api.staticforms.xyz/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(requestData),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+        }),
       });
 
-      console.log("レスポンス:", response.status, response.statusText);
-      
-      // StaticFormsは成功時に307リダイレクトを返すため、ステータスコードで判定
-      if (response.status === 307 || response.ok) {
+      if (response.ok) {
         setSubmitStatus("success");
-        setFormData({
-          name: "",
-          email: "",
-          company: "",
-          phone: "",
-          subject: "",
-          message: "",
-        });
+        setFormData({ name: "", email: "", company: "", phone: "", subject: "", message: "" });
         recaptchaRef.current?.reset();
       } else {
-        console.error("StaticForms Error:", response.status, response.statusText);
+        const data = await response.json();
+        console.error("送信エラー:", data.error);
         setSubmitStatus("error");
       }
     } catch (error) {
-      console.error("送信エラー:", error);
+      console.error("通信エラー:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
