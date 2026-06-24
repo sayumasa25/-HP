@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
             </tr>
             <tr>
               <td style="padding: 10px; background: #f5f5f5; font-weight: bold; border: 1px solid #ddd;">送信日時</td>
-              <td style="padding: 10px; border: 1px solid #ddd;">${new Date().toLocaleString("ja-JP")}</td>
+              <td style="padding: 10px; border: 1px solid #ddd;">${new Date().toLocaleString("ja-JP", { timeZone: "Asia/Tokyo" })}</td>
             </tr>
           </table>
           <p style="margin-top: 24px; color: #666; font-size: 12px;">
