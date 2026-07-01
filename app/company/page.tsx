@@ -186,7 +186,7 @@ export default function CompanyPage() {
                       className="flex flex-col md:flex-row md:justify-between border-b border-gray-100 pb-3"
                     >
                       <span className="font-medium mb-1 md:mb-0">代表者</span>
-                      <span>代表取締役社長　橋本良裕</span>
+                      <span>橋本昌幸</span>
                     </motion.div>
                     <motion.div
                       initial={{ opacity: 0, x: -50 }}
