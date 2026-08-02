@@ -396,27 +396,57 @@ export default function WebDevelopmentPage() {
                 を実装した状態でお渡しします。
               </p>
             </div>
-            <div className={`${styles.listBox} ${styles.mint}`}>
-              <h4>できること</h4>
-              <CheckList
-                items={[
-                  "ニュース・お知らせの追加・編集",
-                  "商品・サービス情報の更新",
-                  "画像の差し替え",
-                  "営業時間・連絡先の変更",
-                ]}
-              />
+            <div
+              className={`${styles.listBox} ${styles.illustratedList} ${styles.mint}`}
+            >
+              <div>
+                <h4>できること</h4>
+                <CheckList
+                  items={[
+                    "ニュース・お知らせの追加・編集",
+                    "商品・サービス情報の更新",
+                    "画像の差し替え",
+                    "営業時間・連絡先の変更",
+                  ]}
+                />
+              </div>
+              <div
+                className={`${styles.featureCharacter} ${styles.characterLeft}`}
+                aria-hidden="true"
+              >
+                <Image
+                  src="/web-development/illustrations/cms-support-pair.png"
+                  alt=""
+                  fill
+                  sizes="120px"
+                />
+              </div>
             </div>
-            <div className={`${styles.listBox} ${styles.orange}`}>
-              <h4>メリット</h4>
-              <CheckList
-                items={[
-                  "更新のたびに業者に依頼不要",
-                  "継続的なコストが発生しない",
-                  "リアルタイムで情報更新可能",
-                  "専門知識不要で簡単操作",
-                ]}
-              />
+            <div
+              className={`${styles.listBox} ${styles.illustratedList} ${styles.orange}`}
+            >
+              <div>
+                <h4>メリット</h4>
+                <CheckList
+                  items={[
+                    "更新のたびに業者に依頼不要",
+                    "継続的なコストが発生しない",
+                    "リアルタイムで情報更新可能",
+                    "専門知識不要で簡単操作",
+                  ]}
+                />
+              </div>
+              <div
+                className={`${styles.featureCharacter} ${styles.characterRight}`}
+                aria-hidden="true"
+              >
+                <Image
+                  src="/web-development/illustrations/cms-support-pair.png"
+                  alt=""
+                  fill
+                  sizes="120px"
+                />
+              </div>
             </div>
             <p className={styles.featureMessage}>
               美しいウェブサイトを

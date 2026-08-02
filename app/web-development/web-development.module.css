@@ -482,6 +482,9 @@
   background: linear-gradient(135deg, #fff, #fdfbff);
   box-shadow: 0 12px 35px #56378e12;
 }
+.feature > * {
+  min-width: 0;
+}
 .featureVisual {
   position: relative;
 }
@@ -526,6 +529,49 @@
   align-self: stretch;
   padding: 20px;
   border-radius: 13px;
+}
+.illustratedList {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 112px;
+  gap: 8px;
+  align-items: end;
+  overflow: hidden;
+}
+.featureCharacter {
+  position: relative;
+  width: 112px;
+  height: 118px;
+  margin: 0 -11px -15px 0;
+  pointer-events: none;
+}
+.featureCharacter::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 3px;
+  right: 8px;
+  width: 9px;
+  height: 9px;
+  background: #ffbd3e;
+  clip-path: polygon(
+    50% 0,
+    62% 38%,
+    100% 50%,
+    62% 62%,
+    50% 100%,
+    38% 62%,
+    0 50%,
+    38% 38%
+  );
+}
+.featureCharacter img {
+  object-fit: cover;
+}
+.characterLeft img {
+  object-position: left center;
+}
+.characterRight img {
+  object-position: right center;
 }
 .listBox h4 {
   margin: 0 0 10px;
@@ -711,7 +757,18 @@
     padding-inline: 17px;
   }
   .feature {
-    grid-template-columns: 1fr 1.4fr;
+    grid-template-columns: 1fr 1fr;
+  }
+  .featureBody h3 {
+    font-size: 22px;
+    word-break: keep-all;
+  }
+  .illustratedList {
+    grid-template-columns: minmax(0, 1fr) 96px;
+  }
+  .featureCharacter {
+    width: 96px;
+    height: 104px;
   }
   .featureMessage {
     grid-column: 1/-1;
@@ -811,6 +868,13 @@
     grid-template-columns: 1fr;
     padding: 22px 18px;
   }
+  .illustratedList {
+    grid-template-columns: minmax(0, 1fr) 112px;
+  }
+  .featureCharacter {
+    width: 112px;
+    height: 118px;
+  }
   .featureVisual {
     width: 85%;
     margin: 0 auto;
@@ -818,6 +882,9 @@
   .featureBody h3 {
     font-size: 22px;
     text-align: center;
+    word-break: normal;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
   }
   .featureMessage {
     grid-column: auto;
@@ -1059,6 +1126,17 @@
   .listBox {
     padding: 10px 12px;
     border-radius: 9px;
+  }
+
+  .illustratedList {
+    grid-template-columns: minmax(0, 1fr) 76px;
+    gap: 4px;
+  }
+
+  .featureCharacter {
+    width: 76px;
+    height: 84px;
+    margin: 0 -7px -8px 0;
   }
 
   .listBox h4 {
