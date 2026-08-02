@@ -17,7 +17,8 @@ html.dark {
 
 /* キラキラアニメーション */
 @keyframes sparkle {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
     transform: scale(1);
   }
@@ -28,7 +29,8 @@ html.dark {
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -37,7 +39,8 @@ html.dark {
 }
 
 @keyframes float-delayed {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -52,4 +55,16 @@ html.dark {
 .animate-float-delayed {
   animation: float-delayed 8s ease-in-out infinite;
   animation-delay: 2s;
+}
+
+/* The web-development page has its own brochure-style header treatment. */
+@media (min-width: 901px) {
+  body:has(#web-development-page) > header,
+  body:has(#web-development-page) > footer {
+    display: none;
+  }
+
+  body:has(#web-development-page) > div {
+    padding-top: 0;
+  }
 }

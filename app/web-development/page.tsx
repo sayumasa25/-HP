@@ -1,624 +1,537 @@
-"use client";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import styles from "./web-development.module.css";
+
+export const metadata: Metadata = {
+  title: "ホームページ制作",
+  description:
+    "広島の中小企業・個人事業者向けに、見やすく更新しやすいホームページを制作します。",
+};
+
+type IconName =
+  | "wallet"
+  | "chart"
+  | "clock"
+  | "rocket"
+  | "quality"
+  | "cost"
+  | "talk"
+  | "edit"
+  | "cms"
+  | "gift"
+  | "check"
+  | "arrow";
+
+function Icon({ name, size = 44 }: { name: IconName; size?: number }) {
+  const paths: Record<IconName, React.ReactNode> = {
+    wallet: (
+      <>
+        <path d="M5 9h26v18H5z" />
+        <path d="M8 9V6h19v3M23 15h10v7H23z" />
+        <circle cx="27" cy="18.5" r="1" />
+      </>
+    ),
+    chart: (
+      <>
+        <path d="M6 29V8M6 29h25" />
+        <path d="m10 23 6-7 5 4 9-11" />
+        <path d="M25 9h5v5" />
+      </>
+    ),
+    clock: (
+      <>
+        <circle cx="18" cy="18" r="13" />
+        <path d="M18 10v9l6 4" />
+      </>
+    ),
+    rocket: (
+      <>
+        <path d="M14 24 8 28l1-7m13-7 7-7c-7-1-13 2-17 8l-3 5 7 7 5-3c6-4 9-10 8-17Z" />
+        <path d="m12 25-3 3m4 1-4 4" />
+        <circle cx="22" cy="14" r="2.5" />
+      </>
+    ),
+    quality: (
+      <>
+        <path d="M18 5 22 9h6v6l4 4-4 4v6h-6l-4 4-4-4H8v-6l-4-4 4-4V9h6Z" />
+        <path d="m12 19 4 4 8-9" />
+      </>
+    ),
+    cost: (
+      <>
+        <path d="M7 13h22v17H7z" />
+        <path d="M10 13V9h16v4M18 16v11m-4-8h8m-8 5h8" />
+      </>
+    ),
+    talk: (
+      <>
+        <path d="M6 8h24v17H16l-7 5v-5H6z" />
+        <path d="M11 14h14m-14 5h9" />
+      </>
+    ),
+    edit: (
+      <>
+        <path d="M8 28h6L29 13l-6-6L8 22z" />
+        <path d="m20 10 6 6M7 31h24" />
+      </>
+    ),
+    cms: (
+      <>
+        <rect x="5" y="7" width="26" height="22" rx="2" />
+        <path d="M5 13h26M10 10h.1M14 10h.1M18 10h.1M10 18h7v6h-7zm11 0h5m-5 5h5" />
+      </>
+    ),
+    gift: (
+      <>
+        <path d="M5 16h26v16H5zM3 11h30v6H3zM18 11v21" />
+        <path d="M18 11c-5 0-8-2-8-5 0-2 2-3 4-2 3 1 4 7 4 7Zm0 0c5 0 8-2 8-5 0-2-2-3-4-2-3 1-4 7-4 7Z" />
+      </>
+    ),
+    check: <path d="m7 18 7 7 15-16" />,
+    arrow: (
+      <>
+        <path d="M5 18h25M23 11l7 7-7 7" />
+      </>
+    ),
+  };
+  return (
+    <svg
+      className={styles.icon}
+      width={size}
+      height={size}
+      viewBox="0 0 36 36"
+      fill="none"
+      aria-hidden="true"
+    >
+      {paths[name]}
+    </svg>
+  );
+}
+
+const concerns = [
+  {
+    icon: "wallet" as const,
+    image: "/web-development/illustrations/concern-expensive.png",
+    tone: "pink",
+    title: "高額な制作費",
+    body: (
+      <>
+        見栄えの良いHPを作ろうとすると<strong>数百万円</strong>
+        の見積もりがかかる
+      </>
+    ),
+  },
+  {
+    icon: "chart" as const,
+    image: "/web-development/illustrations/concern-running-cost.png",
+    tone: "blue",
+    title: "継続的なコスト",
+    body: (
+      <>
+        制作費0円でも<strong>毎月の費用</strong>が発生してコスト負担が大きい
+      </>
+    ),
+  },
+  {
+    icon: "clock" as const,
+    image: "/web-development/illustrations/concern-time.png",
+    tone: "orange",
+    title: "時間がない",
+    body: (
+      <>
+        <strong>短納期</strong>
+        で見栄えよく、ローコストでウェブサイトを作ってほしい
+      </>
+    ),
+  },
+];
+
+const strengths = [
+  {
+    icon: "rocket" as const,
+    image: "/web-development/illustrations/strength-fast.png",
+    tone: "blue",
+    title: "短納期",
+    body: (
+      <>
+        内容にもよりますが<strong>おおよそ1週間</strong>、短いものだと
+        <strong>3日間程度</strong>で第一弾を制作します。
+      </>
+    ),
+    note: "お急ぎの案件もお気軽にご相談ください",
+  },
+  {
+    icon: "quality" as const,
+    image: "/web-development/illustrations/strength-quality.png",
+    tone: "mint",
+    title: "高品質",
+    body: (
+      <>
+        <strong>AIを駆使した最新プログラミング</strong>
+        で視覚的にわかりやすいページを作ります。
+      </>
+    ),
+    note: "レスポンシブ対応・SEO対策も標準装備",
+  },
+  {
+    icon: "cost" as const,
+    image: "/web-development/illustrations/strength-low-cost.png",
+    tone: "orange",
+    title: "ローコスト",
+    body: (
+      <>
+        1件あたり<strong className={styles.price}>5万円～10万円</strong>
+        でHPやウェブサイトを制作いたします。
+      </>
+    ),
+    note: "内容により変動します。まずはお見積りを",
+  },
+];
+
+const steps = [
+  {
+    icon: "talk" as const,
+    image: "/web-development/illustrations/flow-meeting.png",
+    title: "お打合せ",
+    body: "どんな内容にしたいのか参考URLを共有いただく。お電話やZoom等で事前お打合せ実施。",
+    note: "アイデアが湧かない場合はこちらでたたき台を作成",
+  },
+  {
+    icon: "edit" as const,
+    image: "/web-development/illustrations/flow-design.png",
+    title: "制作・修正",
+    body: "たたき台をベースに修正を加える。お客様のご要望に合わせて細かく調整いたします。",
+  },
+  {
+    icon: "cms" as const,
+    image: "/web-development/illustrations/flow-cms.png",
+    title: "CMS実装",
+    body: "お客様がご自身で更新をかけたい部分にCMS機能を実装する。",
+    note: "簡単操作で更新可能に！",
+  },
+  {
+    icon: "gift" as const,
+    image: "/web-development/illustrations/flow-delivery.png",
+    title: "納品",
+    body: "Netlifyというアドレス経由で納品いたします。",
+    note: "ドメインの新規作成やお引越しは別途対応可能",
+  },
+];
 
 export default function WebDevelopmentPage() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
   return (
-    <main className="min-h-screen bg-white pt-20">
-      {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-blue-100 via-indigo-200 to-purple-100">
-        {/* キラキラ背景エフェクト */}
-        <div className="absolute inset-0">
-          {/* メイングラデーション */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 via-indigo-500/15 to-purple-400/20"></div>
-          
-          {/* キラキラパターン */}
-          <div 
-            className="absolute inset-0 opacity-30"
-            style={{
-              backgroundImage: `radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.3) 0%, transparent 50%), 
-                               radial-gradient(circle at 75% 75%, rgba(99, 102, 241, 0.3) 0%, transparent 50%),
-                               radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.2) 0%, transparent 50%)`,
-              backgroundSize: '100px 100px, 150px 150px, 200px 200px',
-              animation: 'sparkle 8s ease-in-out infinite'
-            }}
-          ></div>
-          
-          {/* 動的な光の点 */}
-          <div className="absolute inset-0">
-            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full opacity-60 animate-pulse"></div>
-            <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-indigo-300 rounded-full opacity-80 animate-ping"></div>
-            <div className="absolute bottom-1/4 left-1/3 w-3 h-3 bg-purple-300 rounded-full opacity-40 animate-pulse"></div>
-            <div className="absolute top-2/3 right-1/4 w-1 h-1 bg-blue-300 rounded-full opacity-70 animate-ping"></div>
-            <div className="absolute bottom-1/3 right-2/3 w-2 h-2 bg-indigo-400 rounded-full opacity-50 animate-pulse"></div>
+    <main className={styles.page} id="web-development-page">
+      <section className={styles.hero}>
+        <div className={styles.blobPink} />
+        <div className={styles.blobBlue} />
+        <div className={styles.dots} />
+        <div className={`${styles.container} ${styles.heroGrid}`}>
+          <div className={styles.heroCopy}>
+            <p className={styles.eyebrow}>HASHIMOTO WEB</p>
+            <h1>
+              会社の魅力が、
+              <br />
+              <span>きちんと伝わる</span>
+              <br />
+              ホームページを。
+            </h1>
+            <p className={styles.lead}>
+              広島の中小企業・個人事業者向けに、
+              <br className={styles.desktopBreak} />
+              見やすく、更新しやすいホームページを制作します。
+            </p>
+            <p className={styles.badge}>
+              <span>¥</span>導入しやすいリーズナブルな制作費
+            </p>
+            <div className={styles.actions}>
+              <Link className={styles.primaryButton} href="/contact">
+                無料相談はこちら <Icon name="arrow" size={18} />
+              </Link>
+              <a className={styles.secondaryButton} href="#portfolio">
+                制作事例を見る <Icon name="arrow" size={18} />
+              </a>
+            </div>
+          </div>
+          <div
+            className={styles.devices}
+            aria-label="制作サイトのパソコン・スマートフォン表示例"
+          >
+            <div className={styles.browser}>
+              <div className={styles.browserBar}>
+                <i />
+                <i />
+                <i />
+                <span>www.company-example.jp</span>
+              </div>
+              <div className={styles.browserScreen}>
+                <Image
+                  src="/web-development/corporate-building-hero.png"
+                  alt="企業サイトのホームページ表示例"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 82vw, 520px"
+                />
+                <div className={styles.screenCopy}>
+                  <small>会社のホームページ</small>
+                  <strong>
+                    想いを、かたちに。
+                    <br />
+                    未来へつなぐモノづくり。
+                  </strong>
+                  <span>詳しく見る</span>
+                </div>
+              </div>
+            </div>
+            <div className={styles.laptopBase} />
+            <div className={styles.phone}>
+              <div className={styles.phoneSpeaker} />
+              <div className={styles.phoneScreen}>
+                <Image
+                  src="/web-development/corporate-building-hero.png"
+                  alt="企業サイトのスマートフォン表示例"
+                  fill
+                  priority
+                  sizes="150px"
+                />
+                <div className={`${styles.screenCopy} ${styles.phoneCopy}`}>
+                  <small>会社のホームページ</small>
+                  <strong>
+                    想いを、かたちに。
+                    <br />
+                    未来へつなぐ。
+                  </strong>
+                  <span>詳しく見る</span>
+                </div>
+              </div>
+              <div className={styles.phoneHome} />
+            </div>
           </div>
         </div>
-        
-        {/* 装飾的なアイコン（より控えめに） */}
-        <div className="absolute top-10 left-10 opacity-20 animate-float">
-          <div className="text-6xl text-blue-600">💻</div>
-        </div>
-        <div className="absolute top-20 right-20 opacity-20 animate-float-delayed">
-          <div className="text-5xl text-indigo-600">🚀</div>
-        </div>
-        <div className="absolute bottom-20 left-20 opacity-20 animate-float">
-          <div className="text-4xl text-blue-500">⚡</div>
-        </div>
-        <div className="absolute bottom-10 right-10 opacity-20 animate-float-delayed">
-          <div className="text-5xl text-indigo-500">🎨</div>
-        </div>
-        
-        {/* コンテンツ */}
-        <div className="relative z-10 max-w-screen-xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <motion.h1
-              initial={{ opacity: 0, y: -30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-6xl font-light text-gray-800 mb-8 tracking-wider"
-              style={{
-                fontFamily:
-                  "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif",
-              }}
-            >
-              <span className="text-blue-600 font-bold">AI</span>を駆使した高品質な<br />
-              ウェブページを<span className="text-red-600 font-bold">格安</span>で制作します！
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl md:text-2xl text-gray-700 mb-12 leading-relaxed font-light max-w-4xl mx-auto"
-            >
-              くつの橋本商店では、靴のネット通販事業で培ったウェブ制作の知識を基に、<br />
-              お客様のウェブサイト制作事業も展開しております。
-            </motion.p>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <SectionHeading kicker="YOUR CONCERNS">
+            こんなお悩みありませんか？
+          </SectionHeading>
+          <div className={styles.threeColumns}>
+            {concerns.map((item) => (
+              <article
+                className={`${styles.card} ${styles[item.tone]}`}
+                key={item.title}
+              >
+                <div className={styles.cardIllustration}>
+                  <Image src={item.image} alt="" fill sizes="150px" />
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </article>
+            ))}
+          </div>
+          <div className={styles.solution}>
+            <span className={styles.megaphone}>
+              <Icon name="talk" />
+            </span>
+            <div>
+              <h2>そのお悩み、当社が解決します！</h2>
+              <p>最新AI技術 × 豊富な実績 × 地域密着サポート</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* お悩み共有ゾーン */}
-      <section className="py-20 bg-red-50">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2
-              className="text-3xl md:text-4xl font-light text-gray-800 mb-8 tracking-wider"
-              style={{
-                fontFamily:
-                  "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif",
-              }}
-            >
-              こんなお悩みありませんか？
-            </h2>
-            
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="bg-white p-8 rounded-lg shadow-sm border border-red-200"
+      <section className={`${styles.section} ${styles.softSection}`}>
+        <div className={styles.container}>
+          <SectionHeading kicker="OUR STRENGTHS">
+            当社の3つの強み
+          </SectionHeading>
+          <div className={styles.threeColumns}>
+            {strengths.map((item) => (
+              <article
+                className={`${styles.card} ${styles.strengthCard} ${styles[item.tone]}`}
+                key={item.title}
               >
-                <div className="text-red-500 text-4xl mb-4">💸</div>
-                <h3 className="text-lg font-medium text-gray-800 mb-4">高額な制作費</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  見栄えの良いHPを作ろうとすると<span className="text-red-600 font-bold">数百万円</span>の見積もりがかかる
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="bg-white p-8 rounded-lg shadow-sm border border-red-200"
-              >
-                <div className="text-red-500 text-4xl mb-4">📈</div>
-                <h3 className="text-lg font-medium text-gray-800 mb-4">継続的なコスト</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  制作費0円でも<span className="text-red-600 font-bold">毎月の費用</span>が発生してコスト負担が大きい
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                className="bg-white p-8 rounded-lg shadow-sm border border-red-200"
-              >
-                <div className="text-red-500 text-4xl mb-4">⏰</div>
-                <h3 className="text-lg font-medium text-gray-800 mb-4">時間がない</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  <span className="text-red-600 font-bold">短納期</span>で見栄えよく、ローコストでウェブサイトを作ってほしい
-                </p>
-              </motion.div>
-            </div>
-
-            <div className="bg-blue-600 text-white p-8 rounded-lg">
-              <h3 className="text-2xl font-bold mb-4">そのお悩み、当社が解決します！</h3>
-              <p className="text-xl">最新AI技術 × 豊富な実績 × 地域密着サポート</p>
-            </div>
-          </motion.div>
+                <div className={styles.cardIllustration}>
+                  <Image src={item.image} alt="" fill sizes="150px" />
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+                <small>※ {item.note}</small>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* オススメポイント */}
-      <section className="py-20 bg-white">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2
-              className="text-3xl md:text-4xl font-light text-gray-800 mb-16 tracking-wider"
-              style={{
-                fontFamily:
-                  "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif",
-              }}
-            >
-              当社の3つの強み
-            </h2>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="bg-blue-50 p-8 rounded-lg border border-blue-200"
-              >
-                <div className="text-blue-600 text-5xl mb-6">⚡</div>
-                <h3 className="text-xl font-bold text-blue-600 mb-4">短納期</h3>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  内容にもよりますが<span className="font-bold text-blue-600">おおよそ1週間</span>、
-                  短いものだと<span className="font-bold text-blue-600">3日間程度</span>で第一弾を制作します。
-                </p>
-                <div className="text-sm text-gray-600">
-                  ※ お急ぎの案件もお気軽にご相談ください
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="bg-green-50 p-8 rounded-lg border border-green-200"
-              >
-                <div className="text-green-600 text-5xl mb-6">🤖</div>
-                <h3 className="text-xl font-bold text-green-600 mb-4">高品質</h3>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  <span className="font-bold text-green-600">AIを駆使した最新プログラミング</span>で
-                  視覚的にわかりやすいページを作ります。
-                </p>
-                <div className="text-sm text-gray-600">
-                  ※ レスポンシブ対応・SEO対策も標準装備
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                className="bg-red-50 p-8 rounded-lg border border-red-200"
-              >
-                <div className="text-red-600 text-5xl mb-6">💰</div>
-                <h3 className="text-xl font-bold text-red-600 mb-4">ローコスト</h3>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  1件あたり<span className="font-bold text-red-600 text-2xl">5万円～10万円</span>で
-                  HPやウェブサイトを制作いたします。
-                </p>
-                <div className="text-sm text-gray-600">
-                  ※ 内容により変動します。まずはお見積りを
-                </div>
-              </motion.div>
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <SectionHeading kicker="BEST FEATURE">最大の特徴</SectionHeading>
+          <div className={styles.feature}>
+            <div className={styles.featureVisual}>
+              <div className={styles.miniLaptop}>
+                <Image
+                  src="/microCMS.png"
+                  alt="microCMS管理画面の表示例"
+                  fill
+                  sizes="(max-width: 768px) 80vw, 360px"
+                />
+              </div>
+              <span>UPDATE</span>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 最大の特徴 */}
-      <section className="py-20 bg-gradient-to-r from-purple-50 to-pink-50">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2
-              className="text-3xl md:text-4xl font-light text-gray-800 mb-8 tracking-wider"
-              style={{
-                fontFamily:
-                  "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif",
-              }}
-            >
-              🌟 最大の特徴
-            </h2>
-            
-            <div className="bg-white p-12 rounded-lg shadow-lg border border-purple-200 max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold text-purple-600 mb-6">
-                ご自身でマイナーチェンジ可能な状態で納品
+            <div className={styles.featureBody}>
+              <h3>
+                ご自身でマイナーチェンジ
+                <br className={styles.desktopBreak} />
+                可能な状態で納品
               </h3>
-              
-              <div className="text-left space-y-6">
-                <p className="text-gray-700 leading-relaxed text-lg">
-                  せっかく作ったウェブサイトも<span className="font-bold text-red-600">自身で更新を簡単にかけられないと運用しづらい</span>ですよね。
-                </p>
-                
-                <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
-                  <p className="text-gray-700 leading-relaxed">
-                    当社が納品するウェブサイトは、お客様がご自身で更新をかけたいと考えるセクションに
-                    <span className="font-bold text-blue-600">無料のCMS機能（microCMS）</span>を実装した状態でお渡しします。
-                  </p>
-                </div>
-                
-                <div className="grid md:grid-cols-2 gap-6 mt-8">
-                  <div className="bg-green-50 p-6 rounded-lg">
-                    <h4 className="font-bold text-green-600 mb-3">✅ できること</h4>
-                    <ul className="text-sm text-gray-700 space-y-2">
-                      <li>• ニュース・お知らせの追加・編集</li>
-                      <li>• 商品・サービス情報の更新</li>
-                      <li>• 画像の差し替え</li>
-                      <li>• 営業時間・連絡先の変更</li>
-                    </ul>
-                  </div>
-                  
-                  <div className="bg-yellow-50 p-6 rounded-lg">
-                    <h4 className="font-bold text-yellow-600 mb-3">💡 メリット</h4>
-                    <ul className="text-sm text-gray-700 space-y-2">
-                      <li>• 更新のたびに業者に依頼不要</li>
-                      <li>• 継続的なコストが発生しない</li>
-                      <li>• リアルタイムで情報更新可能</li>
-                      <li>• 専門知識不要で簡単操作</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div className="text-center mt-8">
-                  <p className="text-xl font-bold text-purple-600">
-                    美しいウェブサイトをお客様ご自身で更新できるので、<br />
-                    その後の当社へのコストもかかりません！
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 制作の流れ */}
-      <section className="py-20 bg-white">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2
-              className="text-3xl md:text-4xl font-light text-gray-800 mb-16 tracking-wider"
-              style={{
-                fontFamily:
-                  "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif",
-              }}
-            >
-              制作の流れ
-            </h2>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="relative"
-              >
-                <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-blue-600">1</span>
-                </div>
-                <h3 className="text-lg font-bold text-gray-800 mb-4">お打合せ</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  どんな内容にしたいのか参考URLを共有いただく。お電話やZoom等で事前お打合せ実施。
-                  <br />
-                  <span className="text-blue-600 font-medium">（アイデアが湧かない場合はこちらでたたき台を作成）</span>
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="relative"
-              >
-                <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-green-600">2</span>
-                </div>
-                <h3 className="text-lg font-bold text-gray-800 mb-4">制作・修正</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  たたき台をベースに修正を加える。
-                  <br />
-                  お客様のご要望に合わせて細かく調整いたします。
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6, duration: 0.6 }}
-                className="relative"
-              >
-                <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-purple-600">3</span>
-                </div>
-                <h3 className="text-lg font-bold text-gray-800 mb-4">CMS実装</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  お客様がご自身で更新をかけたい部分にCMS機能を実装する。
-                  <br />
-                  <span className="text-purple-600 font-medium">簡単操作で更新可能に！</span>
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                className="relative"
-              >
-                <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-2xl font-bold text-red-600">4</span>
-                </div>
-                <h3 className="text-lg font-bold text-gray-800 mb-4">納品</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Netlifyというアドレス経由で納品いたします。
-                  <br />
-                  <span className="text-red-600 font-medium">（ドメインの新規作成やお引越しは別途対応可能）</span>
-                </p>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 制作実績 */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2
-              className="text-3xl md:text-4xl font-light text-gray-800 mb-16 tracking-wider"
-              style={{
-                fontFamily:
-                  "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif",
-              }}
-            >
-              これまでの制作実績
-            </h2>
-            
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.6 }}
-                className="bg-white p-8 rounded-lg shadow-sm border border-gray-200"
-              >
-                <div className="mb-6">
-                  <div className="w-full h-48 rounded-lg overflow-hidden mb-4">
-                    <img
-                      src="/hptop.jpg"
-                      alt="くつの橋本商店 サイトプレビュー"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-4">くつの橋本商店</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  1922年創業、広島の履物専門店のコーポレートサイト。
-                  microCMSとNext.jsで構築した自社サイト。
-                </p>
-                <a
-                  href="https://www.hs1922.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-                >
-                  サイトを見る →
-                </a>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="bg-white p-8 rounded-lg shadow-sm border border-gray-200"
-              >
-                <div className="mb-6">
-                  <div className="w-full h-48 rounded-lg overflow-hidden mb-4">
-                    <img
-                      src="/solana-preview.jpg"
-                      alt="ケアステーションソラナ広島 サイトプレビュー"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-4">ケアステーションソラナ広島</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  介護サービス事業所のコーポレートサイト。
-                  サービス紹介とお問い合わせ機能を実装。
-                </p>
-                <a
-                  href="https://www.solana-care.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-purple-700 transition-colors"
-                >
-                  サイトを見る →
-                </a>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* キャンペーン */}
-      <section className="py-20 bg-gradient-to-r from-yellow-50 to-orange-50">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2
-              className="text-3xl md:text-4xl font-light text-gray-800 mb-8 tracking-wider"
-              style={{
-                fontFamily:
-                  "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif",
-              }}
-            >
-              🎉 お試しキャンペーン
-            </h2>
-            
-            <div className="bg-white p-12 rounded-lg shadow-lg border-4 border-yellow-300 max-w-4xl mx-auto">
-              <div className="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full inline-block mb-6">
-                <span className="font-bold">期間限定！</span>
-              </div>
-              
-              <h3 className="text-2xl font-bold text-orange-600 mb-6">
-                約1日で作業できる範囲内の内容であれば<br />
-                <span className="text-3xl text-red-600">無料</span>で一度制作いたします！
-              </h3>
-              
-              <div className="text-left space-y-4 mb-8">
-                <div className="flex items-start">
-                  <span className="text-green-600 text-xl mr-3">✓</span>
-                  <p className="text-gray-700">まずは無料でサンプルサイトを制作</p>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-green-600 text-xl mr-3">✓</span>
-                  <p className="text-gray-700">気に入っていただけたら正式なご注文を検討</p>
-                </div>
-                <div className="flex items-start">
-                  <span className="text-green-600 text-xl mr-3">✓</span>
-                  <p className="text-gray-700">完全無料・ノーリスクでお試し可能</p>
-                </div>
-              </div>
-              
-              <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
-                <p className="text-gray-700 font-medium">
-                  「どんな仕上がりになるか不安...」という方も安心！<br />
-                  まずは実際の制作物をご確認いただけます。
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* まとめ・お問い合わせ */}
-      <section className="py-20 bg-gray-800 text-white">
-        <div className="max-w-screen-xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h2
-              className="text-3xl md:text-4xl font-light mb-12 tracking-wider"
-              style={{
-                fontFamily:
-                  "'Noto Serif JP', 'Yu Mincho', 'YuMincho', 'Hiragino Mincho Pro', serif",
-              }}
-            >
-              お気軽にご相談ください
-            </h2>
-            
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <div className="text-center">
-                <div className="text-4xl mb-4">🤝</div>
-                <h3 className="text-xl font-bold mb-3">継続サポート</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  納品して終わりではなく、ご不明点はいつでもご連絡いただければ対応いたします。
-                </p>
-              </div>
-              
-              <div className="text-center">
-                <div className="text-4xl mb-4">💬</div>
-                <h3 className="text-xl font-bold mb-3">無料相談</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  まずはご相談だけでもお問い合わせくださいませ。
-                  お見積りも無料で承ります。
-                </p>
-              </div>
-              
-              <div className="text-center">
-                <div className="text-4xl mb-4">📞</div>
-                <h3 className="text-xl font-bold mb-3">地域密着</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  広島を中心とした地域企業様への手厚いサポートを提供いたします。
-                </p>
-              </div>
-            </div>
-            
-            <div className="space-y-6">
-              <div className="bg-white text-gray-800 p-8 rounded-lg max-w-2xl mx-auto">
-                <h3 className="text-xl font-bold mb-4">お問い合わせ方法</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center justify-center">
-                    <span className="text-blue-600 text-2xl mr-3">📧</span>
-                    <span>お問い合わせフォーム: 詳細な相談に</span>
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <span className="text-red-600 text-2xl mr-3">📞</span>
-                    <span>お電話: 082-277-2671</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex justify-center">
-                <a
-                  href="/contact"
-                  className="bg-blue-600 text-white px-12 py-4 rounded-lg font-bold text-lg hover:bg-blue-700 transition-colors shadow-lg"
-                >
-                  お問い合わせフォーム
-                </a>
-              </div>
-              
-              <p className="text-gray-400 text-sm">
-                ※ 初回相談・お見積りは完全無料です
+              <p>
+                せっかく作ったウェブサイトも
+                <strong>自身で更新を簡単にかけられないと運用しづらい</strong>
+                ですよね。
+              </p>
+              <p>
+                当社が納品するウェブサイトは、お客様がご自身で更新をかけたいと考えるセクションに
+                <strong>無料のCMS機能（microCMS）</strong>
+                を実装した状態でお渡しします。
               </p>
             </div>
-          </motion.div>
+            <div className={`${styles.listBox} ${styles.mint}`}>
+              <h4>できること</h4>
+              <CheckList
+                items={[
+                  "ニュース・お知らせの追加・編集",
+                  "商品・サービス情報の更新",
+                  "画像の差し替え",
+                  "営業時間・連絡先の変更",
+                ]}
+              />
+            </div>
+            <div className={`${styles.listBox} ${styles.orange}`}>
+              <h4>メリット</h4>
+              <CheckList
+                items={[
+                  "更新のたびに業者に依頼不要",
+                  "継続的なコストが発生しない",
+                  "リアルタイムで情報更新可能",
+                  "専門知識不要で簡単操作",
+                ]}
+              />
+            </div>
+            <p className={styles.featureMessage}>
+              美しいウェブサイトを
+              <br />
+              お客様ご自身で更新できるので、
+              <br />
+              その後の当社へのコストもかかりません！
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className={`${styles.section} ${styles.flowSection}`}>
+        <div className={styles.container}>
+          <SectionHeading kicker="PROCESS">制作の流れ</SectionHeading>
+          <div className={styles.flow}>
+            {steps.map((step, index) => (
+              <article className={styles.step} key={step.title}>
+                <span className={styles.stepNumber}>{index + 1}</span>
+                <div className={styles.stepIllustration}>
+                  <Image src={step.image} alt="" fill sizes="110px" />
+                </div>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+                {step.note && <small>（{step.note}）</small>}
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.section} id="portfolio">
+        <div className={styles.container}>
+          <SectionHeading kicker="WORKS">これまでの制作実績</SectionHeading>
+          <div className={styles.portfolioGrid}>
+            <Portfolio
+              image="/hptop.jpg"
+              title="くつの橋本商店"
+              body="1922年創業、広島の履物専門店のコーポレートサイト。microCMSとNext.jsで構築した自社サイト。"
+              href="https://www.hs1922.com/"
+              tone="pink"
+            />
+            <Portfolio
+              image="/solana-preview.jpg"
+              title="ケアステーションソラナ広島"
+              body="介護サービス事業所のコーポレートサイト。サービス紹介とお問い合わせ機能を実装。"
+              href="https://www.solana-care.com/"
+              tone="blue"
+            />
+          </div>
         </div>
       </section>
     </main>
+  );
+}
+
+function SectionHeading({
+  kicker,
+  children,
+}: {
+  kicker: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className={styles.sectionHeading}>
+      <p>{kicker}</p>
+      <h2>{children}</h2>
+      <span />
+    </div>
+  );
+}
+
+function CheckList({ items }: { items: string[] }) {
+  return (
+    <ul>
+      {items.map((item) => (
+        <li key={item}>
+          <Icon name="check" size={18} />
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Portfolio({
+  image,
+  title,
+  body,
+  href,
+  tone,
+}: {
+  image: string;
+  title: string;
+  body: string;
+  href: string;
+  tone: "pink" | "blue";
+}) {
+  return (
+    <article className={`${styles.portfolioCard} ${styles[tone]}`}>
+      <div className={styles.portfolioImage}>
+        <Image
+          src={image}
+          alt={`${title} サイトプレビュー`}
+          fill
+          sizes="(max-width: 768px) 88vw, 480px"
+        />
+      </div>
+      <div className={styles.portfolioCopy}>
+        <h3>{title}</h3>
+        <p>{body}</p>
+        <a href={href} target="_blank" rel="noopener noreferrer">
+          サイトを見る <Icon name="arrow" size={18} />
+        </a>
+      </div>
+    </article>
   );
 }
