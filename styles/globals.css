@@ -56,15 +56,3 @@ html.dark {
   animation: float-delayed 8s ease-in-out infinite;
   animation-delay: 2s;
 }
-
-/* The web-development page has its own brochure-style header treatment. */
-@media (min-width: 901px) {
-  body:has(#web-development-page) > header,
-  body:has(#web-development-page) > footer {
-    display: none;
-  }
-
-  body:has(#web-development-page) > div {
-    padding-top: 0;
-  }
-}
