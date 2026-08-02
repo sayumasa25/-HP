@@ -517,6 +517,9 @@
   font-size: 26px;
   line-height: 1.5;
 }
+.featureTitlePhrase {
+  white-space: nowrap;
+}
 .featureBody p {
   font-size: 14px;
   line-height: 1.8;
@@ -761,7 +764,9 @@
   }
   .featureBody h3 {
     font-size: 22px;
-    word-break: keep-all;
+    word-break: normal;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
   }
   .illustratedList {
     grid-template-columns: minmax(0, 1fr) 96px;
@@ -922,6 +927,12 @@
   .actions a,
   .portfolioCopy a {
     transition: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .featureTitlePhrase {
+    white-space: normal;
   }
 }
 

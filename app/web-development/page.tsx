@@ -381,9 +381,13 @@ export default function WebDevelopmentPage() {
             </div>
             <div className={styles.featureBody}>
               <h3>
-                ご自身でマイナーチェンジ
-                <br className={styles.desktopBreak} />
-                可能な状態で納品
+                <span className={styles.featureTitlePhrase}>
+                  ご自身でマイナーチェンジ
+                </span>
+                <wbr />
+                <span className={styles.featureTitlePhrase}>
+                  可能な状態で納品
+                </span>
               </h3>
               <p>
                 せっかく作ったウェブサイトも
