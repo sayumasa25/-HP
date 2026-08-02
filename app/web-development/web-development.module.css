@@ -16,6 +16,7 @@
 .hero {
   position: relative;
   padding: 82px 0 92px;
+  overflow: hidden;
   background: linear-gradient(145deg, #fff 55%, #f7fbff);
   isolation: isolate;
 }
@@ -774,6 +775,13 @@
   }
   .sectionHeading {
     margin-bottom: 30px;
+  }
+  .sectionHeading h2 {
+    max-width: 100%;
+    font-size: clamp(23px, 6.4vw, 27px);
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
   }
   .threeColumns {
     grid-template-columns: 1fr;
