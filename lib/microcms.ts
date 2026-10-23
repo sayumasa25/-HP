@@ -5,10 +5,13 @@ const serviceDomain = process.env.MICROCMS_SERVICE_DOMAIN;
 const apiKey = process.env.MICROCMS_API_KEY;
 
 // microCMSクライアントの初期化（環境変数が設定されている場合のみ）
-export const client = serviceDomain && apiKey ? createClient({
-  serviceDomain,
-  apiKey,
-}) : null;
+export const client =
+  serviceDomain && apiKey
+    ? createClient({
+        serviceDomain,
+        apiKey,
+      })
+    : null;
 
 // ヒーロー画像の型定義（シンプル版）
 export interface HeroImage {
@@ -61,8 +64,13 @@ export interface EventItem {
   location?: string;
 }
 
+interface ContentBlock {
+  type?: string;
+  [key: string]: unknown;
+}
+
 // コンテンツブロック一覧取得
-export const getContentBlocks = async () => {
+export const getContentBlocks = async (): Promise<ContentBlock[]> => {
   if (!client) {
     console.warn("microCMS client not initialized - returning empty array");
     return [];
@@ -71,7 +79,7 @@ export const getContentBlocks = async () => {
     const data = await client.get({
       endpoint: "contentBlocks",
     });
-    return data.contents;
+    return data.contents as ContentBlock[];
   } catch (error) {
     console.error("Failed to fetch content blocks:", error);
     return [];
@@ -99,7 +107,7 @@ export const getNews = async (): Promise<NewsItem[]> => {
 export const getEvents = async () => {
   try {
     const data = await getContentBlocks();
-    return data.filter((item: any) => item.type === "event");
+    return data.filter((item) => item.type === "event");
   } catch (error) {
     console.error("Failed to fetch events:", error);
     return [];

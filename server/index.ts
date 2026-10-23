@@ -105,11 +105,12 @@ app.get("/api/news", async (_, res) => {
         res.json(news);
         return;
       }
-    } catch (microCMSError: any) {
-      console.log(
-        "microCMS connection failed, using mock data:",
-        microCMSError.message,
-      );
+    } catch (microCMSError: unknown) {
+      const message =
+        microCMSError instanceof Error
+          ? microCMSError.message
+          : String(microCMSError);
+      console.log("microCMS connection failed, using mock data:", message);
     }
 
     // 実際のニュースコンテンツ

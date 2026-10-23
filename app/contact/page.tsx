@@ -3,6 +3,10 @@ import { motion } from "framer-motion";
 import { useState, useRef } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
+const RECAPTCHA_SITE_KEY =
+  process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ??
+  "6Ld5ENsrAAAAAMiQvTaNieSPOmMBMW6WmzVMQKvf";
+
 export default function ContactPage() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [formData, setFormData] = useState({
@@ -32,12 +36,15 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    console.log("フォーム送信開始:", formData);
-    
+    setSubmitStatus("idle");
+
     // 必須項目チェック
-    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
-      console.error("必須項目エラー:", { name: formData.name, email: formData.email, subject: formData.subject, message: formData.message });
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.subject ||
+      !formData.message
+    ) {
       setSubmitStatus("error");
       setIsSubmitting(false);
       return;
@@ -62,21 +69,31 @@ export default function ContactPage() {
           phone: formData.phone,
           subject: formData.subject,
           message: formData.message,
+          recaptchaToken: recaptchaValue,
         }),
       });
 
       if (response.ok) {
         setSubmitStatus("success");
-        setFormData({ name: "", email: "", company: "", phone: "", subject: "", message: "" });
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
         recaptchaRef.current?.reset();
       } else {
         const data = await response.json();
         console.error("送信エラー:", data.error);
         setSubmitStatus("error");
+        recaptchaRef.current?.reset();
       }
     } catch (error) {
       console.error("通信エラー:", error);
       setSubmitStatus("error");
+      recaptchaRef.current?.reset();
     } finally {
       setIsSubmitting(false);
     }
@@ -193,10 +210,7 @@ export default function ContactPage() {
                   </div>
                 )}
 
-                <form 
-                  onSubmit={handleSubmit} 
-                  className="space-y-6"
-                >
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label
                       htmlFor="name"
@@ -323,7 +337,7 @@ export default function ContactPage() {
                   <div className="flex justify-center">
                     <ReCAPTCHA
                       ref={recaptchaRef}
-                      sitekey="6Ld5ENsrAAAAAMiQvTaNieSPOmMBMW6WmzVMQKvf"
+                      sitekey={RECAPTCHA_SITE_KEY}
                       theme="light"
                     />
                   </div>
