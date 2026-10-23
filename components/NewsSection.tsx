@@ -11,11 +11,13 @@ interface NewsSectionProps {
 export function NewsSection({ newsData }: NewsSectionProps) {
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('ja-JP', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit'
-    }).replace(/\//g, '.');
+    return date
+      .toLocaleDateString("ja-JP", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      })
+      .replace(/\//g, ".");
   };
 
   // 最新3件のみ表示
@@ -82,7 +84,8 @@ export function NewsSection({ newsData }: NewsSectionProps) {
                       {item.title}
                     </h3>
                     <p className="text-gray-600 font-light leading-relaxed">
-                      {item.content.replace(/<[^>]*>/g, '').substring(0, 100) + '...'}
+                      {item.content.replace(/<[^>]*>/g, "").substring(0, 100) +
+                        "..."}
                     </p>
                   </div>
                 </div>
@@ -98,12 +101,12 @@ export function NewsSection({ newsData }: NewsSectionProps) {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="text-center mt-12"
         >
-          <a
+          <Link
             href="/news"
             className="inline-block border border-gray-800 text-gray-800 px-8 py-3 font-light text-sm tracking-wide hover:bg-gray-800 hover:text-white transition-colors duration-300"
           >
             VIEW MORE
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
